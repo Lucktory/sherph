@@ -1,0 +1,205 @@
+.siteHead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+
+.siteHead.stuck {
+  background: rgba(22, 22, 38, 0.9);
+  backdrop-filter: blur(14px);
+  border-color: rgba(58, 58, 90, 0.5);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
+}
+
+.siteHead.open {
+  background: rgba(22, 22, 38, 0.97);
+}
+
+/* Over the hero video the links need more contrast than the muted token. */
+.siteHead:not(.stuck):not(.open) .navLinks a:not(.active) {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 76px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.navLinks {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.navLinks a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: var(--tr);
+  padding: 9px 15px;
+  border-radius: 1000px;
+  white-space: nowrap;
+}
+
+/* Spanish and Portuguese labels run longer than the English ones, and between
+   the mobile breakpoint and ~1280px they would otherwise wrap mid-bar. */
+@media (max-width: 1280px) {
+  .bar {
+    gap: 16px;
+  }
+
+  .navLinks a {
+    font-size: 13.5px;
+    padding: 9px 10px;
+  }
+}
+
+.navLinks a:hover {
+  color: #fff;
+  background: rgba(105, 94, 254, 0.14);
+}
+
+.navLinks a.active {
+  color: #fff;
+  background: var(--accent);
+}
+
+.headCta {
+  margin-left: 6px;
+}
+
+.headCta :global(.btn) {
+  padding: 0.6rem 1.6rem;
+  font-size: 14px;
+}
+
+.burger {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  width: 46px;
+  height: 42px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.burger i {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.mobileNav {
+  display: none;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.siteHead.open .mobileNav {
+  display: block;
+}
+
+.siteHead.open .burger i:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.siteHead.open .burger i:nth-child(2) {
+  opacity: 0;
+}
+
+.siteHead.open .burger i:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobileNav a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 26px;
+  border-bottom: 1px solid var(--bg-2);
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 48px;
+  color: var(--ink-2);
+}
+
+.mobileNav a .go {
+  color: var(--accent-2);
+}
+
+@media (max-width: 1023px) {
+  .navLinks,
+  .headCta {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+    margin-left: 12px;
+  }
+}
+
+/* ---------- handle chip ----------
+   The wordmark is a handle, not a name, and the site says so here rather than
+   leaving a visitor to guess. Lowercase wordmark plus this chip is the whole
+   signal.
+
+   `baseline` rather than `center`: the chip is less than half the logo's size,
+   and centring it against a 22px/900 word drops it visually below the word's
+   own centre of mass. */
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: none;
+}
+
+/* Tabular-feeling small caps, sized off --label-sm so it tracks the other
+   labels on the page. Not a link and not interactive, so it only needs the 3:1
+   non-text ratio, and 0.62 white over the hero video clears it. */
+.alias {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 5px;
+  padding: 2px 5px 1px;
+  /* Pulls the chip back up: a 9.5px box on the logo's baseline otherwise hangs
+     its own descender space below the word. */
+  transform: translateY(-1px);
+}
+
+/* On the light panels the header turns solid dark, so the chip keeps its light
+   treatment there. It only needs a different colour before the header sticks,
+   and the hero behind it is dark too, so one treatment covers both. */
+
+@media (max-width: 420px) {
+  /* At this width the chip and the language toggle start fighting for the bar.
+     The lowercase wordmark still reads as a handle without it. */
+  .alias {
+    display: none;
+  }
+}

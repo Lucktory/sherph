@@ -1,0 +1,470 @@
+/* ============================================================
+   Services — one viewport tall
+
+   The section is a flex column: heading at natural height, bento
+   taking whatever is left. The bento's third row is deliberately
+   short (a wide strip rather than a full row of cards), which is
+   what makes a six-cell grid fit inside 100vh at all.
+
+   Below ~840px of viewport height there is genuinely not enough
+   room, so it falls back to natural flow rather than squashing —
+   a clipped section is worse than a slightly tall one.
+
+   Deliberately NOT `overflow: hidden` on the section: that makes
+   it a scroll container, and ScrollTrigger would then treat it as
+   the scroller for every trigger inside, so none of them fire.
+   ============================================================ */
+
+.services {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Top padding clears the fixed 76px header, which would otherwise crop the
+     heading whenever this full-height section is scrolled flush to the top. */
+  padding: 96px 0 48px;
+  background: #12121f;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.head {
+  flex: none;
+  margin-bottom: 26px;
+}
+
+/* ---------- bento ----------
+     +-----------+--------+--------+
+     |           |   02   |   03   |
+     |    01     +--------+--------+
+     |   tall    |   04   |   05   |
+     |           +--------+--------+
+     |           |    06  strip    |
+     +-----------+-----------------+
+   `tall` and `strip` are placed explicitly; the four `cell` entries
+   auto-flow into the gaps between them. */
+.bento {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.06fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  gap: 14px;
+  perspective: 1600px;
+}
+
+.tall {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.strip {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+/* ---------- glass card ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 22px;
+  /* Only a whisper of fill, so the mesh and panel behind read through almost
+     unobstructed. The card reads as an edge and a blur, not as a surface. */
+  background: rgba(255, 255, 255, 0.012);
+  /* No backdrop blur, deliberately. The dots behind are only ~3px across, so
+     even a 3px blur averaged them into flat tint and the grid disappeared
+     behind every card (measured: pixel spread 23 without it, 3 with it, 0 at
+     the 18px this started on). The card is a plain translucent tint instead,
+     which is what lets the mesh read straight through it. */
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 26px 60px -34px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  min-height: 0;
+  will-change: transform;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.032);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.tall {
+  padding: 30px;
+}
+
+.strip {
+  padding: 18px 24px;
+}
+
+/* ---------- the lit top edge ---------- */
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Hairline along the edge itself. */
+.edge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 14%;
+  right: 14%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(178, 150, 255, 0.7),
+    rgba(255, 255, 255, 0.95),
+    rgba(178, 150, 255, 0.7),
+    transparent
+  );
+  opacity: 0.8;
+  transition: opacity 0.35s ease;
+}
+
+/* The bloom under it. An ellipse rather than a box-shadow — a shadow would
+   trace this 1px bar and give the glow flat top and bottom edges. */
+.edge::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 68%;
+  height: 64px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse closest-side,
+    rgba(150, 120, 255, 0.38),
+    rgba(150, 120, 255, 0.12) 52%,
+    transparent 78%
+  );
+  opacity: 0.85;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .edge::before,
+.card:hover .edge::after {
+  opacity: 1;
+}
+
+/* ---------- body layout ---------- */
+.body {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+.tall .body {
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.tall .text {
+  flex: 1;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cell .body {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.strip .body {
+  flex-direction: row;
+  align-items: center;
+  gap: 22px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+}
+
+.textTop {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* Only the flagship carries a description; it is what stops that tall card
+   reading as mostly empty space. */
+.desc {
+  font-size: 15.5px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--muted);
+  max-width: 42ch;
+  margin-top: 4px;
+}
+
+.cell .text {
+  flex: 1;
+}
+
+/* The strip runs everything on one line, the way the reference does. */
+.strip .text {
+  flex: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.strip .textTop {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+
+.viz {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.tall .viz {
+  width: 100%;
+}
+
+.cell .viz {
+  flex: none;
+  width: 44%;
+  max-width: 150px;
+  justify-content: flex-end;
+}
+
+.strip .viz {
+  flex: 1;
+}
+
+/* ---------- type ---------- */
+.idx {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 10px;
+  background: rgba(105, 94, 254, 0.16);
+  border: 1px solid rgba(136, 129, 254, 0.3);
+  color: var(--accent-2);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.strip .idx {
+  margin-bottom: 0;
+}
+
+.kind {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.title {
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* The flagship occupies a 2x2 cell, so its type scales with it — small type
+   in a large card is what makes the card read as empty. */
+.tall .title {
+  font-family: var(--stack-display);
+  font-size: clamp(30px, 3.3vw, 47px);
+  line-height: 1.12;
+}
+
+.tall .desc {
+  font-size: 16.5px;
+  line-height: 1.6;
+  max-width: 38ch;
+}
+
+.strip .title {
+  font-size: 19px;
+  white-space: nowrap;
+}
+
+/* ---------- metric ---------- */
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.strip .metric {
+  margin-top: 0;
+}
+
+/* The largest glyphs on the site are DIGITS, not words: `.tall .metric b`
+   below reaches 106px and is gradient-filled. The display face has to carry
+   numerals first and letters second. */
+.metric b {
+  font-family: var(--stack-display);
+  font-size: clamp(34px, 3.2vw, 46px);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.tall .metric b {
+  font-size: clamp(64px, 7.2vw, 106px);
+}
+
+.strip .metric b {
+  font-size: 30px;
+}
+
+/* Large, in the gradient, sitting on the baseline — the way the reference sets
+   it. A small raised suffix reads as a typo when the unit is a word. */
+.unit {
+  font-size: 0.52em;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin-left: 0.1em;
+  text-transform: uppercase;
+}
+
+.metric > span {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.strip .metric > span {
+  display: none;
+}
+
+/* ---------- chips (flagship only) ---------- */
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  flex: none;
+}
+
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--label-sm);
+  font-weight: 700;
+  /* Tighter than --track-label — these are chips, set close on purpose. */
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 1000px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- fallbacks ---------- */
+/* Short viewports and tablets cannot hold six cells in one screen. Rather than
+   squash or clip, let the section grow. */
+@media (max-height: 840px), (max-width: 1100px) {
+  .services {
+    min-height: auto;
+    padding: 80px 0;
+    justify-content: flex-start;
+  }
+
+  .bento {
+    flex: none;
+    grid-template-rows: none;
+    grid-auto-rows: minmax(186px, auto);
+  }
+
+  .strip {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 1100px) {
+  .bento {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tall {
+    grid-column: 1 / span 2;
+    grid-row: auto;
+  }
+
+  .strip {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .tall,
+  .strip,
+  .cell {
+    grid-column: 1;
+  }
+
+  .cell .body,
+  .strip .body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cell .viz,
+  .strip .viz {
+    width: 100%;
+    max-width: none;
+    justify-content: flex-start;
+  }
+
+  .strip .text {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .strip .title {
+    white-space: normal;
+  }
+}

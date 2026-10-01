@@ -1,0 +1,22 @@
+node_modules
+.next
+out
+build
+.DS_Store
+*.pem
+npm-debug.log*
+.env*
+!.env.example
+next-env.d.ts
+.vercel
+tsconfig.tsbuildinfo
+
+# Scratch staging folder: raw screenshots and video cuts that were already
+# renamed and copied into public/. 20 MB of duplicates, nothing the site serves.
+assets/
+patagonia.png
+
+# Holds draft outreach messages signed with the owner's real name. The site is
+# published under the "sherpa" handle on purpose, so this stays out of a public
+# repo. Remove this line if the repo is private and you want it tracked.
+docs/testimonial-requests.md

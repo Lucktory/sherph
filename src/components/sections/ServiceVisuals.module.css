@@ -1,0 +1,228 @@
+/* ---------- horizontal bars with labels either side ---------- */
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.barLabel {
+  flex: none;
+  width: 92px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.barRow:last-child .barLabel {
+  color: var(--accent-2);
+}
+
+.barValue {
+  flex: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 46px;
+  text-align: right;
+}
+
+.barTrack {
+  position: relative;
+  flex: 1;
+  height: 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.barFill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform-origin: left center;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* The highlighted bar is yours; the muted ones are what it is measured against. */
+.barFill[data-highlight='true'] {
+  background: var(--grad);
+}
+
+/* ---------- vertical columns ---------- */
+/* An explicit height, not 100%: inside a centred flex row the parent has no
+   resolved height, so a percentage collapses the columns to nothing. */
+.columns {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 96px;
+  width: 100%;
+}
+
+.columnTrack {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.columnFill {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transform-origin: bottom center;
+  background: linear-gradient(180deg, rgba(136, 129, 254, 0.75), rgba(105, 94, 254, 0.3));
+}
+
+.columnFill[data-highlight='true'] {
+  background: linear-gradient(180deg, #ff6af8, #8881fe);
+}
+
+/* ---------- gauge ---------- */
+.gaugeWrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.gauge {
+  width: 100%;
+  max-width: 118px;
+  display: block;
+  overflow: visible;
+}
+
+.gaugeTrack,
+.gaugeFill {
+  fill: none;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.gaugeTrack {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.gaugeFill {
+  stroke: url(#flowgradRing);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.gaugeCentre {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.gaugeCentre b {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+/* ---------- checklist ---------- */
+.checks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 100%;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.tick {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(140deg, var(--accent), var(--pink));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+/* ---------- palette + type scale ---------- */
+.palette {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 100%;
+}
+
+.swatches {
+  display: flex;
+  gap: 7px;
+}
+
+.swatch {
+  width: 31px;
+  height: 31px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.typeScale {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.typeLine {
+  height: 6px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  transform-origin: left center;
+}
+
+/* ---------- day strip ---------- */
+.days {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.day {
+  flex: 1;
+  min-width: 0;
+  height: 13px;
+  border-radius: 4px;
+  background: linear-gradient(140deg, var(--accent), var(--pink));
+}
+
+/* ---------- chip glyph ---------- */
+.chipGlyph {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: none;
+  stroke: url(#flowgrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

@@ -1,0 +1,365 @@
+/* The light break in the page rhythm.
+
+   Projects (#16162a) and Stack (#0f0f1c) sit either side of this section, so
+   flipping it to the light panel is what stops the bottom half of the page
+   reading as one long dark slab. It reuses the same `.light` token set as the
+   Process section, so the two light panels are the same surface rather than two
+   unrelated light greys.
+
+   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   ScrollTrigger would then treat it as the scroller for every trigger inside it,
+   so those triggers could never fire. The stage clips itself instead. */
+.testimonials:global(.light) {
+  background: var(--bg-3);
+  border-top: 1px solid rgba(58, 58, 90, 0.4);
+  border-bottom: 1px solid rgba(58, 58, 90, 0.4);
+}
+
+.testimonials {
+  position: relative;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.head {
+  text-align: center;
+}
+
+.head :global(.sub) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- stage ----------
+   Three cards are on screen at once: the active one centred, and the two
+   neighbours peeking in from the shoulders at reduced scale and opacity. The
+   stage clips them so they fade out of frame rather than running to the edge. */
+.stage {
+  position: relative;
+  margin-top: 52px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+/* Height is set from JS to the tallest card — see Testimonials.tsx. The
+   min-height is only a floor for the first paint, before measuring. */
+.track {
+  position: relative;
+  min-height: 300px;
+}
+
+/* ---------- card ----------
+   Opaque white on the slightly grey panel, which is what separates card from
+   background here. On the dark sections that job was done by a hairline over a
+   near-transparent fill, and a 1.4%-white fill on a light panel is nothing. */
+.card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(680px, 84%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px clamp(24px, 4vw, 48px) 32px;
+  border-radius: 22px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  box-shadow: 0 22px 48px -26px rgba(39, 39, 61, 0.34);
+  /* The centre slot is the reference position; the shoulder slots are offsets
+     from it, so every transform below keeps this -50% baseline. */
+  transform: translateX(-50%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
+
+.isCentre {
+  opacity: 1;
+  z-index: 3;
+}
+
+/* -153% / 53% place the shoulders just clear of the centre card.
+
+   0.55, not the 0.22 this used while the section was dark: a white card faded
+   to 22% over a #f0f0fa panel is very nearly the panel itself, so the shoulders
+   all but vanished. The higher value is affordable now that the cards are
+   opaque — the original worry, the centre quote showing through an overlapping
+   shoulder, can no longer happen. */
+.isLeft {
+  opacity: 0.55;
+  z-index: 2;
+  transform: translateX(-153%) scale(0.94);
+  box-shadow: none;
+}
+
+.isRight {
+  opacity: 0.55;
+  z-index: 2;
+  transform: translateX(53%) scale(0.94);
+  box-shadow: none;
+}
+
+.isOff {
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(-50%) scale(0.9);
+  pointer-events: none;
+}
+
+/* Oversized quote mark, low enough not to compete with the text over it. */
+.quoteMark {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: url(#flowgrad);
+  stroke-width: 1.4;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* ---------- rating row ---------- */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  /* Clears the quote mark in the corner. */
+  padding-right: 54px;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Bright gold fill for the familiar look, darker amber outline so the star is
+   still a defined shape against white — the fill alone is only 2.1:1 there. */
+.star {
+  width: 15px;
+  height: 15px;
+  fill: #fbbf24;
+  stroke: #d97706;
+  stroke-width: 1;
+}
+
+.stars b {
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+
+/* Not --muted-2: at 10.5px that token only reaches 3.4:1 on this panel. */
+/* 750 for the same reason as Process .fsub — this panel is light. */
+.when {
+  font-size: var(--label-sm);
+  font-weight: 750;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: #5c5c7a;
+}
+
+/* ---------- quote ---------- */
+.quote {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.62;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+/* ---------- attribution ---------- */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.avatar,
+.avatarLogo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Initials, used when the client has no logo to show. */
+.avatar {
+  background: rgba(105, 94, 254, 0.1);
+  border: 1px solid rgba(105, 94, 254, 0.24);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+/* A client logo instead. White ground rather than the purple tint, since these
+   are other people's brand marks and several are dark ink on white; `contain`
+   because a wide wordmark must not be stretched into a square. */
+.avatarLogo {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.avatarLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+/* A client who asked not to be named: the mark carries the attribution, so it
+   gets a wide slot instead of being squeezed into the square tile. No tile
+   behind it either. The supplied art is dark line work and the card is white,
+   so it sits directly on the card. */
+.wordmark {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+/* Height set on the image itself, not inherited as 100% of the box: inside the
+   flex row the box stretches, and a percentage height then resolved against the
+   stretched track rather than the 44px intended. */
+.wordmark img {
+  height: 44px;
+  width: auto;
+  max-width: 132px;
+  object-fit: contain;
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.who b {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.who span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ---------- controls ---------- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--ink-2);
+  cursor: pointer;
+  /* Lifts the control off a panel it is otherwise nearly the same tone as. */
+  box-shadow: 0 6px 16px -8px rgba(39, 39, 61, 0.38);
+  transition: border-color var(--tr), background var(--tr), color var(--tr);
+}
+
+.arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.arrow:hover {
+  border-color: var(--accent);
+  background: rgba(105, 94, 254, 0.1);
+  color: var(--accent);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 26px;
+}
+
+.dot,
+.dotOn {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: width var(--tr), background var(--tr);
+}
+
+.dot {
+  background: rgba(39, 39, 61, 0.22);
+}
+
+.dot:hover {
+  background: rgba(39, 39, 61, 0.4);
+}
+
+.dotOn {
+  width: 26px;
+  border-radius: 1000px;
+  background: var(--grad);
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: min(680px, 92%);
+  }
+
+  /* The shoulders would be slivers at this width, so only the active card
+     shows and the arrows do the navigating. */
+  .isLeft,
+  .isRight {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .prev {
+    left: -6px;
+  }
+
+  .next {
+    right: -6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: opacity 0.2s ease;
+  }
+}

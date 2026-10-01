@@ -1,0 +1,432 @@
+/* ---------- scrim ---------- */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(6, 6, 14, 0.66);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: fade 0.25s ease both;
+}
+
+/* A DIFFERENT keyframes name from the entrance — NOT the same one played in
+   reverse. Re-pointing an animation at the same @keyframes with a new direction
+   or duration does not restart it: the already-finished animation stays
+   finished, animationend never fires, the panel never unmounts, and an
+   invisible scrim is left over the whole page swallowing every click. */
+.scrimOut {
+  animation: fadeOut 0.24s ease both;
+}
+
+/* ---------- panel ---------- */
+/* Tall and narrow on purpose. A centred dialog has to fit the viewport in both
+   directions, which is what forced the previous version's content into one
+   long paragraph; a drawer only has to fit vertically, so the content can be a
+   scannable list and the grid stays visible alongside it. */
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(620px, 100%);
+  height: 100%;
+  background: var(--bg-3);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -30px 0 70px -30px rgba(0, 0, 0, 0.95);
+  animation: slideIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Distinct keyframes name — see the note on .scrimOut. */
+.panelOut {
+  animation: slideOut 0.28s cubic-bezier(0.55, 0, 0.68, 0.3) both;
+}
+
+/* ---------- top bar ---------- */
+/* Sticky rather than scrolling away: close and next are the two things a
+   reader reaches for at any point, and hunting for them is what makes a long
+   panel feel like a trap. */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: none;
+  padding: 14px 16px 14px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--bg-3);
+}
+
+.counter {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--muted-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.barActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: border-color var(--tr), background var(--tr), color var(--tr);
+}
+
+.iconBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.iconBtn:hover {
+  border-color: var(--accent-2);
+  background: rgba(105, 94, 254, 0.2);
+  color: #fff;
+}
+
+.iconBtn:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* ---------- scrolling body ---------- */
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 24px clamp(20px, 3.5vw, 32px) clamp(28px, 4vw, 40px);
+}
+
+/* ---------- screenshot ---------- */
+.shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  flex: none;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--bg-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The same glass plate the cards use, so a category reads identically in both
+   places. */
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 6px 11px 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 20, 0.72);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+}
+
+.tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--grad);
+}
+
+/* ---------- title and path ---------- */
+.title {
+  font-family: var(--stack-display);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: -16px; /* pulls the path up under the title */
+}
+
+.path {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--accent-2);
+  border-bottom: 1px solid rgba(136, 129, 254, 0.35);
+  padding-bottom: 1px;
+  transition: color var(--tr), border-color var(--tr);
+}
+
+.path:hover {
+  color: var(--pink);
+  border-color: rgba(255, 106, 248, 0.6);
+}
+
+.pathIcon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+/* ---------- blocks ---------- */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blockLabel {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.role {
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* ---------- facts ---------- */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.fact dt {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.fact dd {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.result b {
+  font-family: var(--stack-display);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- problems solved ----------
+   The part that carries the skill, so it gets the most structure: a numbered
+   rail, the obstacle in white, what was done about it underneath. Scannable in
+   one pass without reading a word of it. */
+.problems {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+}
+
+.problem {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.problem:first-child {
+  border-top: none;
+  padding-top: 2px;
+}
+
+.problemNo {
+  flex: none;
+  width: 26px;
+  font-family: var(--stack-display);
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.5;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+.problemText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.problemHead {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #fff;
+}
+
+.problemBody {
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---------- NDA state ---------- */
+.nda {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+}
+
+.ndaIcon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  margin-top: 3px;
+  color: var(--accent-2);
+}
+
+/* ---------- call to action ---------- */
+.visit {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--grad);
+  border-radius: 1000px;
+  padding: 0.85rem 1.7rem;
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+
+.visit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px -14px rgba(160, 93, 253, 0.7);
+}
+
+.visitIcon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  transition: transform var(--tr);
+}
+
+.visit:hover .visitIcon {
+  transform: translate(2px, -2px);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 560px) {
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No slide, and no exit animation to wait on — the component closes
+     immediately in this mode (see ProjectDrawer.tsx). */
+  .scrim,
+  .scrimOut,
+  .panel,
+  .panelOut {
+    animation: none;
+  }
+
+  .visit:hover {
+    transform: none;
+  }
+
+  .visit:hover .visitIcon {
+    transform: none;
+  }
+}

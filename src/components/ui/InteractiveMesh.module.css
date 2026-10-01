@@ -1,0 +1,24 @@
+/* Sits behind the section's content. The section must be `position: relative`
+   and its content must sit above this layer. Deliberately no `overflow` here —
+   the canvas is already exactly inset, and an overflow value on an ancestor of a
+   ScrollTrigger would make it the scroller and stop that trigger firing. */
+.host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .host {
+    display: none;
+  }
+}

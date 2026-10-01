@@ -1,0 +1,212 @@
+/* The whole section is one video rectangle. Everything that used to be here
+   (portrait, bio, stat grid, CTA row) is gone on purpose, and so is the dim
+   overlay and the "hover to play" prompt that sat on top of it.
+
+   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   ScrollTrigger would then treat it as the scroller for every trigger inside it,
+   so those triggers could never fire. The frame clips itself. */
+.about {
+  position: relative;
+  background: #16162a;
+  padding: 104px 0 112px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- the frame ---------- */
+/* 16/9 because that is the source video's own ratio, so nothing is letterboxed
+   or cropped. Capped in vh as well as px so a short laptop window does not have
+   to scroll to reach the end of a ten second clip. */
+.frame {
+  position: relative;
+  width: min(980px, 100%);
+  aspect-ratio: 16 / 9;
+  max-height: 72vh;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #0d0d18;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+}
+
+.done {
+  cursor: default;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+/* Softens the last frame as the two buttons arrive, so they sit on a backdrop
+   rather than competing with a sharp face.
+   The scale is not decorative: a blur samples beyond the element's edges and
+   leaves a translucent rim against the frame border, so the picture is pushed
+   slightly past the clip to keep that rim out of sight. */
+.done .video {
+  filter: blur(14px);
+  transform: scale(1.06);
+}
+
+/* ---------- invisible control ---------- */
+/* There is no visible prompt by request, so this exists only to give keyboard
+   and touch users a way in. It draws nothing until focused. */
+.hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hit:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -4px;
+  border-radius: 22px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- the two icons ---------- */
+/* Nothing else at the end: no copy, no panel, no scrim. Just the marks, in
+   their own brand colours, over the video's last frame. */
+/* Anchored to the lower third rather than dead centre: the clip ends on a
+   centred face, and two buttons parked over someone's eyes is not the last
+   thing this section should leave you with. */
+.outro {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: clamp(28px, 6%, 56px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+}
+
+.done .outro {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease, visibility 0s;
+}
+
+.link {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  transform: translateY(14px) scale(0.9);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease,
+    box-shadow var(--tr);
+}
+
+.done .link {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Staggered by hand so the two do not land at the same instant. */
+.done .link:first-child {
+  transition-delay: 0.1s;
+}
+
+.done .link:last-child {
+  transition-delay: 0.18s;
+}
+
+.whatsapp {
+  background: #25d366;
+  box-shadow: 0 14px 34px -12px rgba(37, 211, 102, 0.75);
+}
+
+.telegram {
+  background: #229ed9;
+  box-shadow: 0 14px 34px -12px rgba(34, 158, 217, 0.75);
+}
+
+.whatsapp:hover {
+  box-shadow: 0 18px 40px -10px rgba(37, 211, 102, 0.95);
+}
+
+.telegram:hover {
+  box-shadow: 0 18px 40px -10px rgba(34, 158, 217, 0.95);
+}
+
+.link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.linkIcon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+/* The Telegram glyph sits visually right of centre in its own box, so nudge it
+   back or the paper plane looks off inside a circle. */
+.telegram .linkIcon {
+  margin-left: -2px;
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 72px 0 80px;
+  }
+
+  .frame {
+    border-radius: 16px;
+  }
+
+  .link {
+    width: 56px;
+    height: 56px;
+  }
+
+  .linkIcon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Nothing slides. The video still only plays on a deliberate action. */
+  .link {
+    transform: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .outro {
+    transition: none;
+  }
+
+  /* The blur still applies, it just arrives without the ramp. */
+  .video {
+    transition: none;
+  }
+}

@@ -1,0 +1,81 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 10, 20, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: var(--r-s);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+
+.caption {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(39, 39, 61, 0.85);
+  border: 1px solid var(--line);
+  border-radius: 1000px;
+  padding: 10px 24px;
+  white-space: nowrap;
+}
+
+.lightbox button {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: rgba(39, 39, 61, 0.85);
+  color: #fff;
+  font-size: 19px;
+  cursor: pointer;
+  transition: var(--tr);
+  z-index: 2;
+}
+
+.lightbox button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.close {
+  top: 24px;
+  right: 24px;
+}
+
+.prev {
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.next {
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 640px) {
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+}

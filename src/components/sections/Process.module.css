@@ -1,0 +1,270 @@
+/* Overrides the shared `.light` background with the deeper light-panel token.
+   The doubled class keeps it ahead of `section.light` in specificity. */
+.process:global(.light) {
+  background: var(--bg-3);
+  border-top: 1px solid rgba(58, 58, 90, 0.4);
+  border-bottom: 1px solid rgba(58, 58, 90, 0.4);
+}
+
+/* Positioning context for the cursor spotlight behind the content.
+   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   ScrollTrigger would then treat it as the scroller for every trigger inside it,
+   so those triggers could never fire. The spotlight clips itself instead. */
+.process {
+  position: relative;
+}
+
+/* Everything readable sits above the spotlight layer. */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.head {
+  text-align: center;
+}
+
+.head :global(.sub) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   Motion note
+
+   All entrance choreography for this section lives in GSAP
+   (see Process.tsx), not here. GSAP writes inline transforms, so
+   nothing below may set `transform` in a `:hover` rule — the
+   inline style always wins and the CSS rule would quietly stop
+   applying. Hover styling here is limited to colour and shadow.
+   ============================================================ */
+
+.flow {
+  position: relative;
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+/* ---------- connector rail + travelling beam ---------- */
+/* Tall enough that the beam's glow falls off naturally inside it. At the old
+   22px the clip sliced the bloom into a hard-edged rectangle. The horizontal
+   clip is what actually matters — it stops the beam overshooting the rail — and
+   both ends sit behind the icon tiles, so that edge is never seen. */
+.railWrap {
+  position: absolute;
+  top: 5.5px;
+  left: calc(12.5% + 40px);
+  right: calc(12.5% + 40px);
+  height: 96px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Held back from full strength so the beam has somewhere to travel *to*. */
+.rail {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #695efe, #a05dfd, #ff6af8);
+  opacity: 0.45;
+  transform-origin: left center;
+}
+
+.beam {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 230px;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(105, 94, 254, 0.55) 22%,
+    #a86bff 44%,
+    #ffffff 52%,
+    #ff6af8 62%,
+    rgba(255, 106, 248, 0.5) 80%,
+    transparent 100%
+  );
+  will-change: transform;
+}
+
+.fstep {
+  position: relative;
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* ---------- icon tile ---------- */
+/* Perspective belongs on the parent of the element being rotated. */
+.ficWrap {
+  perspective: 900px;
+  width: 104px;
+  margin: 0 auto;
+}
+
+.fic {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  border-radius: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  transition: border-color var(--tr), box-shadow var(--tr);
+  z-index: 1;
+  will-change: transform;
+}
+
+/* Glow tracking the cursor, positioned by the vars the tilt hook writes. */
+.fic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    130px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(105, 94, 254, 0.24),
+    rgba(255, 106, 248, 0.1) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.fic:hover::after {
+  opacity: 1;
+}
+
+.fic:hover {
+  border-color: var(--accent);
+  box-shadow: 0 24px 50px -20px rgba(105, 94, 254, 0.55);
+}
+
+.fic svg {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  stroke: url(#flowgrad);
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* pathLength=1 on every shape, so one dash value covers them all. */
+  stroke-dasharray: 1;
+}
+
+.fno {
+  position: absolute;
+  z-index: 2;
+  top: -12px;
+  right: -12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--bg-3);
+}
+
+/* ---------- copy ---------- */
+.fstep h3 {
+  font-size: 19px;
+  font-weight: 800;
+  margin-top: 24px;
+}
+
+/* 750, not 700: this label sits on the light panel, where dark-on-light
+   loses apparent weight. Free — Archivo is one variable file. */
+.fsub {
+  font-size: var(--label-sm);
+  font-weight: 750;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-top: 6px;
+}
+
+.fstep p {
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 500;
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fdur {
+  display: inline-flex;
+  margin-top: 14px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 1000px;
+  padding: 6px 16px;
+  background: rgba(105, 94, 254, 0.1);
+}
+
+/* Trust ribbon under the flow. */
+.flowNote {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.fn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 1000px;
+  padding: 11px 22px;
+}
+
+.fn i {
+  font-style: normal;
+  color: var(--pink);
+}
+
+@media (max-width: 960px) {
+  .flow {
+    grid-template-columns: 1fr 1fr;
+    gap: 44px 20px;
+  }
+
+  /* No rail in the stacked layouts — each tile carries its own entrance. */
+  .railWrap {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .flow {
+    grid-template-columns: 1fr;
+  }
+}

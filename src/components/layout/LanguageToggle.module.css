@@ -1,0 +1,41 @@
+.langTog {
+  display: flex;
+  gap: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 1000px;
+  padding: 3px;
+  margin-left: 12px;
+}
+
+/* Once the header turns solid, the hairline border can use the normal token. */
+.langTog.solid {
+  border-color: var(--line);
+}
+
+.langTog button {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 11px;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: var(--tr);
+  letter-spacing: 0.04em;
+}
+
+.langTog button:hover {
+  color: #fff;
+}
+
+.langTog button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 1023px) {
+  .langTog {
+    margin-left: auto;
+  }
+}

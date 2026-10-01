@@ -1,0 +1,210 @@
+/* No `overflow: hidden` anywhere on this section — it would break the sticky
+   card stacking that gives the section its effect. */
+.designShow {
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* The video rides along with the scroll: sticky, exactly one viewport tall. */
+.vwrap {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Readability overlay, applied on the viewport-sized layer. */
+.vwrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(22, 22, 38, 0.72), rgba(22, 22, 38, 0.72)),
+    radial-gradient(1000px 500px at 80% 8%, rgba(105, 94, 254, 0.22), transparent 60%);
+}
+
+/* Soft fades so the section blends into its dark neighbours. */
+.bg::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 140px;
+  z-index: 1;
+  background: linear-gradient(var(--bg), transparent);
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  z-index: 1;
+  background: linear-gradient(transparent, var(--bg));
+}
+
+/* Lift the content above the sticky video layer. */
+.designShow :global(.wrap) {
+  position: relative;
+  z-index: 1;
+}
+
+.stack {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+}
+
+.card {
+  position: sticky;
+  top: 96px;
+  border-radius: var(--r-m);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 -24px 60px -30px rgba(0, 0, 0, 0.75);
+  cursor: zoom-in;
+  background: var(--bg-2);
+  display: block;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.imgWrap {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: min(76vh, 640px);
+  overflow: hidden;
+}
+
+.card img {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+}
+
+.cap {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Same glass plate as the projects grid. This was the identical solid purple
+   pill, doing the identical job over the identical kind of media — changing one
+   without the other would have left the same device rendered two ways. */
+.cap .k {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 8px 13px 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 20, 0.72);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+}
+
+.cap .k::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--grad);
+}
+
+/* Matched to the category plate beside it — same radius, fill and border, so
+   the two read as one caption rather than a rectangle next to a capsule. */
+.cap .t {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(10, 10, 20, 0.72);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.zoom {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(16, 16, 29, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0;
+  transition: var(--tr);
+}
+
+.card:hover .zoom,
+.card:focus-visible .zoom {
+  opacity: 1;
+}
+
+@media (max-width: 880px) {
+  .card {
+    position: static;
+  }
+
+  .imgWrap {
+    height: 54vw;
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card img,
+  .card:hover img {
+    transition: none;
+    transform: none;
+  }
+}

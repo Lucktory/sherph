@@ -1,0 +1,194 @@
+/* Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   ScrollTrigger would then treat it as the scroller for every trigger inside it,
+   so those triggers could never fire. Each row's viewport clips itself. */
+/* The deepest panel on the page, and the only one textured with grid lines
+   rather than the dot mesh — a technical surface for a technical section, and
+   an instant signal that this is not the section above it. */
+.stack {
+  position: relative;
+  background: #0f0f1c;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* 0.065, not the 0.04 this started at: over #0f0f1c that composites to
+     rgb(30,30,43) against rgb(15,15,28), and anything fainter is gone entirely
+     once the mask below has attenuated it. */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+  background-size: 68px 68px;
+  /* Fades the grid out toward the edges so it never meets the section border
+     as a hard ruled line. The solid core is wide (60%) because a narrow one
+     left the grid legible only in a small patch behind the heading. */
+  -webkit-mask-image: radial-gradient(ellipse 92% 78% at 50% 46%, #000 60%, transparent 96%);
+  mask-image: radial-gradient(ellipse 92% 78% at 50% 46%, #000 60%, transparent 96%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.head {
+  text-align: center;
+}
+
+.head :global(.sub) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 52px;
+}
+
+/* ---------- row ---------- */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rowLabel {
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+/* The viewport clips the moving track and fades it out at both ends, so logos
+   dissolve into the panel instead of being chopped off at a hard edge.
+
+   The padding/negative-margin pair is not decorative: overflow clips at the
+   padding box, and without that headroom the 3px hover lift pushed each tile's
+   top edge outside the clip and squared off its rounded corners. The matching
+   negative margin cancels the layout cost, so rows keep their spacing. */
+.viewport {
+  overflow: hidden;
+  padding: 10px 0;
+  margin: -10px 0;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.set {
+  display: flex;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+/* ---------- tile ---------- */
+.tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex: none;
+  padding: 13px 20px 13px 17px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.014);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background var(--tr), border-color var(--tr), transform var(--tr);
+}
+
+.tile:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Simple Icons render with fill: currentColor, so colour is all that is needed.
+   Monochrome at rest; the brand colour is the reward for stopping on one. */
+.logo {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--muted-2);
+  transition: color var(--tr), transform var(--tr);
+}
+
+.tile:hover .logo {
+  color: var(--brand);
+  transform: scale(1.08);
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink-2);
+  transition: color var(--tr);
+}
+
+.tile:hover .name {
+  color: #fff;
+}
+
+.hint {
+  margin-top: 26px;
+  text-align: center;
+  font-size: var(--label-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+@media (max-width: 640px) {
+  .tile {
+    padding: 11px 16px 11px 14px;
+    gap: 9px;
+  }
+
+  .logo {
+    width: 19px;
+    height: 19px;
+  }
+
+  .name {
+    font-size: 12.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The track never moves, so let the row scroll by hand instead of sitting
+     frozen with half its logos unreachable off-screen. */
+  .viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .tile:hover {
+    transform: none;
+  }
+
+  .tile:hover .logo {
+    transform: none;
+  }
+
+  .hint {
+    display: none;
+  }
+}
