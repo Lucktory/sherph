@@ -12,13 +12,15 @@ export type NavItem = {
  *
  * Every entry must correspond to a section that actually renders - a link to a
  * missing id scrolls nowhere, and the scroll-spy underlines a tab nobody can
- * reach. `certifications` is commented out because that section does not exist
- * yet; its dictionary label is still in `nav`, so uncommenting is all it needs.
+ * reach. Two entries are commented out for that reason: `certifications`, whose
+ * section was never built, and `designshow`, whose section exists but is no
+ * longer rendered on the page. Both keep their dictionary labels in `nav`, so
+ * uncommenting the line is all either one needs.
  */
 export const navItems: readonly NavItem[] = [
   { id: 'process', labelKey: 'process' },
   { id: 'services', labelKey: 'services' },
-  { id: 'designshow', labelKey: 'designShow' },
+  // { id: 'designshow', labelKey: 'designShow' },
   { id: 'projects', labelKey: 'projects' },
   { id: 'testimonials', labelKey: 'testimonials' },
   { id: 'stacks', labelKey: 'stacks' },
