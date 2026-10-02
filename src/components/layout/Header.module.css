@@ -203,3 +203,52 @@
     display: none;
   }
 }
+
+/* ---------- where the language switch lives ----------
+   On a phone the bar was logo, three language buttons, burger. The switch was
+   the widest thing in it and the first thing you saw, which is backwards: it is
+   the control a visitor uses once, if ever. Below the burger breakpoint it
+   moves into the menu and the bar is just the wordmark and the burger.
+
+   `display: contents` so the wrapper adds no box of its own on desktop and the
+   toggle keeps its own margin and position in the bar's flex row. */
+.barLang {
+  display: contents;
+}
+
+.menuLang {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .barLang {
+    display: none;
+  }
+
+  /* `auto` margin was on the toggle, which is now gone on this breakpoint, so
+     the burger takes over pushing itself to the right. */
+  .burger {
+    margin-left: auto;
+  }
+
+  .menuLang {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 24px;
+  }
+
+  /* The toggle sets its own `margin-left: auto` at this breakpoint, to push
+     itself right in the bar. In the menu that beats justify-content and pins it
+     to the edge, so it is cleared here. */
+  .menuLang > div {
+    margin-left: 0;
+  }
+
+  /* The bar version is 26px tall, which is under the 44px a thumb needs. There
+     is room for a comfortable target here, so take it. */
+  .menuLang button {
+    min-height: 44px;
+    min-width: 58px;
+    font-size: 13.5px;
+  }
+}

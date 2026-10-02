@@ -48,7 +48,12 @@ export function Header() {
           ))}
         </nav>
 
-        <LanguageToggle solid={isStuck || isMenuOpen} label={dict.nav.languageLabel} />
+        {/* Rendered twice rather than moved, because the bar and the drop-down
+            menu are siblings and no CSS can relocate a node between them. Only
+            one is ever displayed, so only one reaches the accessibility tree. */}
+        <span className={styles.barLang}>
+          <LanguageToggle solid={isStuck || isMenuOpen} label={dict.nav.languageLabel} />
+        </span>
 
         <div className={styles.headCta}>
           <ContactLink className="btn btn-accent">{dict.nav.cta}</ContactLink>
@@ -76,6 +81,10 @@ export function Header() {
         <ContactLink onClick={() => setIsMenuOpen(false)}>
           {dict.nav.cta} <span className={styles.go}>&rarr;</span>
         </ContactLink>
+
+        <div className={styles.menuLang}>
+          <LanguageToggle solid label={dict.nav.languageLabel} />
+        </div>
       </nav>
     </header>
   );
