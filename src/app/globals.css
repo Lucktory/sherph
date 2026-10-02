@@ -55,6 +55,23 @@
   --track-label-lg: 0.14em; /* the 12.5px step */
 }
 
+/* On a phone the whole label scale moves up one step.
+   11px is a desktop size, read at arm's length on a screen you are not holding.
+   Most visitors here are on a phone, held closer but at a worse angle and often
+   one-handed, and 11px uppercase with 0.18em of tracking is where that starts
+   to cost real effort. Tracking eases back as the size rises, for the reason in
+   the note above: it is compensating for lost counter space, and there is less
+   to compensate for at 12.5px. Everything that uses these tokens moves at once,
+   which is most of the labels on the site. */
+@media (max-width: 700px) {
+  :root {
+    --label-sm: 12.5px;
+    --label-lg: 13.5px;
+    --track-label: 0.14em;
+    --track-label-lg: 0.12em;
+  }
+}
+
 /* Light sections - token overrides, so the same components invert cleanly. */
 section.light {
   background: #f7f7fb;

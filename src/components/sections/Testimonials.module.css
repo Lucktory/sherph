@@ -297,33 +297,50 @@
   right: 0;
 }
 
+/* The dot you see is the ::before. The button itself is a much larger
+   invisible box around it, because the visible dot is 8px square and a thumb
+   needs about 44. gap is 0 and the spacing lives inside those boxes instead, so
+   the dots sit exactly where they did before while the target is five times the
+   size. margin-top drops by the same 18px the box grew upward. */
 .dots {
   display: flex;
   justify-content: center;
-  gap: 9px;
-  margin-top: 26px;
+  gap: 0;
+  margin-top: 8px;
 }
 
 .dot,
 .dotOn {
-  width: 8px;
-  height: 8px;
+  display: grid;
+  place-items: center;
+  width: 17px;
+  height: 44px;
   padding: 0;
   border: none;
-  border-radius: 50%;
+  background: none;
   cursor: pointer;
+}
+
+.dot::before,
+.dotOn::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(39, 39, 61, 0.22);
   transition: width var(--tr), background var(--tr);
 }
 
-.dot {
-  background: rgba(39, 39, 61, 0.22);
-}
-
-.dot:hover {
+.dot:hover::before {
   background: rgba(39, 39, 61, 0.4);
 }
 
 .dotOn {
+  width: 35px;
+}
+
+.dotOn::before {
   width: 26px;
   border-radius: 1000px;
   background: var(--grad);
@@ -361,5 +378,52 @@
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: opacity 0.2s ease;
+  }
+}
+
+/* ---------- phone controls ----------
+   The arrows are pinned to the sides of the stage, and at this width the card
+   fills nearly the whole screen, so they sat on top of the quote. Below the
+   card there is nothing to collide with, so they move down and the dot row
+   rises to meet them. One control row, no overlap. */
+@media (max-width: 700px) {
+  .stage {
+    padding-bottom: 56px;
+  }
+
+  /* 40px is under the 44 a thumb needs, and these are the main way to move
+     through the quotes on a phone. */
+  .arrow {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    width: 44px;
+    height: 44px;
+  }
+
+  .prev {
+    left: 50%;
+    margin-left: -155px;
+  }
+
+  .next {
+    right: 50%;
+    margin-right: -155px;
+  }
+
+  /* Lifts the dots into the gap between the two arrows. 44 is the button
+     height, 4 keeps it off the stage edge. */
+  .dots {
+    margin-top: -50px;
+  }
+
+  /* More room per dot than on desktop, since this is the only way to jump
+     between quotes without tapping the arrow eight times. */
+  .dot {
+    width: 24px;
+  }
+
+  .dotOn {
+    width: 40px;
   }
 }

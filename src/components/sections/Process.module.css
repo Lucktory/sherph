@@ -268,3 +268,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Matches the phone step the label tokens take in globals. This pill does not
+   use --label-sm because it is sentence case, not a tracked uppercase label,
+   but it sits right beside ones that do and would look undersized left behind. */
+@media (max-width: 700px) {
+  .fdur {
+    font-size: 12.5px;
+  }
+}
