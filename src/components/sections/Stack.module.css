@@ -1,8 +1,8 @@
-/* Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+/* Deliberately NOT `overflow: hidden` - that makes this a scroll container, and
    ScrollTrigger would then treat it as the scroller for every trigger inside it,
    so those triggers could never fire. Each row's viewport clips itself. */
 /* The deepest panel on the page, and the only one textured with grid lines
-   rather than the dot mesh — a technical surface for a technical section, and
+   rather than the dot mesh - a technical surface for a technical section, and
    an instant signal that this is not the section above it. */
 .stack {
   position: relative;

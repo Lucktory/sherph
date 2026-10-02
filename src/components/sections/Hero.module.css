@@ -59,7 +59,7 @@
   margin-bottom: 22px;
 }
 
-/* line-height 1.12, not 1.04 — see the note on About .heading. At 1.04 a
+/* line-height 1.12, not 1.04 - see the note on About .heading. At 1.04 a
    Portuguese or Spanish headline clips its own accents. */
 .content h1 {
   font-family: var(--stack-display);
@@ -72,7 +72,7 @@
 }
 
 /* The gradient phrase takes its own line. Left to wrap naturally it splits
-   mid-phrase and orphans the last word — and the break point moves with each
+   mid-phrase and orphans the last word - and the break point moves with each
    language, so a deliberate two-line headline is the only stable version. */
 .content h1 :global(.grad) {
   display: block;
@@ -137,7 +137,7 @@
   line-height: 1.1;
 }
 
-/* Direct child only — the suffix inside <b> is a span too, and must stay inline
+/* Direct child only - the suffix inside <b> is a span too, and must stay inline
    at the number's size rather than picking up the label styling. */
 .hs > span {
   font-size: var(--label-sm);

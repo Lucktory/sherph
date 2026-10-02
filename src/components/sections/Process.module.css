@@ -7,7 +7,7 @@
 }
 
 /* Positioning context for the cursor spotlight behind the content.
-   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   Deliberately NOT `overflow: hidden` - that makes this a scroll container, and
    ScrollTrigger would then treat it as the scroller for every trigger inside it,
    so those triggers could never fire. The spotlight clips itself instead. */
 .process {
@@ -34,7 +34,7 @@
 
    All entrance choreography for this section lives in GSAP
    (see Process.tsx), not here. GSAP writes inline transforms, so
-   nothing below may set `transform` in a `:hover` rule — the
+   nothing below may set `transform` in a `:hover` rule - the
    inline style always wins and the CSS rule would quietly stop
    applying. Hover styling here is limited to colour and shadow.
    ============================================================ */
@@ -50,7 +50,7 @@
 /* ---------- connector rail + travelling beam ---------- */
 /* Tall enough that the beam's glow falls off naturally inside it. At the old
    22px the clip sliced the bloom into a hard-edged rectangle. The horizontal
-   clip is what actually matters — it stops the beam overshooting the rail — and
+   clip is what actually matters - it stops the beam overshooting the rail - and
    both ends sit behind the icon tiles, so that edge is never seen. */
 .railWrap {
   position: absolute;
@@ -190,7 +190,7 @@
 }
 
 /* 750, not 700: this label sits on the light panel, where dark-on-light
-   loses apparent weight. Free — Archivo is one variable file. */
+   loses apparent weight. Free - Archivo is one variable file. */
 .fsub {
   font-size: var(--label-sm);
   font-weight: 750;
@@ -257,7 +257,7 @@
     gap: 44px 20px;
   }
 
-  /* No rail in the stacked layouts — each tile carries its own entrance. */
+  /* No rail in the stacked layouts - each tile carries its own entrance. */
   .railWrap {
     display: none;
   }

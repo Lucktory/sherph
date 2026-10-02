@@ -6,7 +6,7 @@ import { pt } from '@/i18n/dictionaries/pt';
 
 /**
  * All three dictionaries ship to the client together. They hold plain text only,
- * so the cost is small — and keeping them in memory is what lets the header
+ * so the cost is small - and keeping them in memory is what lets the header
  * toggle switch the whole page instantly: no navigation, no fetch, no flash of
  * the previous language.
  */

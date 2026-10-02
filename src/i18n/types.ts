@@ -8,7 +8,7 @@ export type HeroStat = {
   value: string;
   /**
    * Optional symbol rendered in the accent gradient right after the value
-   * (+, ×, %). Leave it off and put the unit in the label instead — a word like
+   * (+, ×, %). Leave it off and put the unit in the label instead - a word like
    * "weeks" set at the number's size reads as a typo, not a flourish.
    */
   suffix?: string;
@@ -43,7 +43,7 @@ export type ServiceItem = {
   metric: ServiceMetric;
   /**
    * Two or three short supporting phrases. How they are drawn depends on the
-   * cell's visual — the checklist ticks through them, everything else renders
+   * cell's visual - the checklist ticks through them, everything else renders
    * them as chips.
    */
   points: string[];
@@ -59,7 +59,7 @@ export type ServiceItem = {
  *
  * This is the part of a project entry that actually shows skill, so both halves
  * should stay short enough to scan. `problem` says what was hard; `solution`
- * names the technique — the specific thing a reader would recognise as
+ * names the technique - the specific thing a reader would recognise as
  * competence. Two lines each at most; if it needs a paragraph it belongs in a
  * case study, not here.
  */
@@ -81,7 +81,7 @@ export type ProjectItem = {
   /** Year the work shipped, e.g. '2025'. Panel only. */
   year: string;
   /**
-   * What I actually did here, in one line — "Built the custom Shopify theme",
+   * What I actually did here, in one line - "Built the custom Shopify theme",
    * not a description of the product. Panel only.
    */
   role: string;
@@ -91,7 +91,7 @@ export type ProjectItem = {
    */
   problems: ProjectProblem[];
   /**
-   * Public URL of the live site, or `null` when the client is under NDA — the
+   * Public URL of the live site, or `null` when the client is under NDA - the
    * panel then shows `projects.panel.nda` in place of the link.
    *
    * Never put a client's private CRM, admin or staging URL here. If the work
@@ -126,7 +126,7 @@ export type Testimonial = {
    * Out of five, as a string so locales can write '4,9'. Optional on purpose:
    * a star rating is a specific claim, and a client saying they are happy is
    * not the same as a client giving a number. Omit it unless they actually
-   * gave one — the stars are then not rendered at all.
+   * gave one - the stars are then not rendered at all.
    */
   rating?: string;
   /** When the work was delivered, e.g. '2026'. */
@@ -149,7 +149,9 @@ export type Dictionary = {
     description: string;
   };
   nav: {
+    process: string;
     services: string;
+    designShow: string;
     projects: string;
     testimonials: string;
     stacks: string;

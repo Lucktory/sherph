@@ -12,8 +12,7 @@ type UseRevealOptions = {
 /**
  * Fades an element up the first time it scrolls into view.
  *
- * Returns the ref to attach and the class string to spread onto the element —
- * `reveal` is the resting (hidden) state and `in` is the settled state, both
+ * Returns the ref to attach and the class string to spread onto the element - * `reveal` is the resting (hidden) state and `in` is the settled state, both
  * defined globally so sections can compose them with their own module classes.
  */
 export function useReveal<T extends HTMLElement>({ threshold = 0.12, once = true }: UseRevealOptions = {}) {

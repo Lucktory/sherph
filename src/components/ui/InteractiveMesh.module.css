@@ -1,6 +1,5 @@
 /* Sits behind the section's content. The section must be `position: relative`
-   and its content must sit above this layer. Deliberately no `overflow` here —
-   the canvas is already exactly inset, and an overflow value on an ancestor of a
+   and its content must sit above this layer. Deliberately no `overflow` here - the canvas is already exactly inset, and an overflow value on an ancestor of a
    ScrollTrigger would make it the scroller and stop that trigger firing. */
 .host {
   position: absolute;

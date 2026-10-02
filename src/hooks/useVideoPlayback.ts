@@ -30,7 +30,7 @@ export function useAutoplayVideo(ref: RefObject<HTMLVideoElement | null>) {
 
 /**
  * Plays a background video only while its section is on screen, and pauses it
- * the moment it scrolls away — it keeps a heavy file from decoding needlessly.
+ * the moment it scrolls away - it keeps a heavy file from decoding needlessly.
  */
 export function useVideoInView(
   videoRef: RefObject<HTMLVideoElement | null>,

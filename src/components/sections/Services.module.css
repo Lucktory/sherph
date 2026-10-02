@@ -1,5 +1,5 @@
 /* ============================================================
-   Services — one viewport tall
+   Services - one viewport tall
 
    The section is a flex column: heading at natural height, bento
    taking whatever is left. The bento's third row is deliberately
@@ -7,8 +7,7 @@
    what makes a six-cell grid fit inside 100vh at all.
 
    Below ~840px of viewport height there is genuinely not enough
-   room, so it falls back to natural flow rather than squashing —
-   a clipped section is worse than a slightly tall one.
+   room, so it falls back to natural flow rather than squashing - a clipped section is worse than a slightly tall one.
 
    Deliberately NOT `overflow: hidden` on the section: that makes
    it a scroll container, and ScrollTrigger would then treat it as
@@ -138,7 +137,7 @@
   transition: opacity 0.35s ease;
 }
 
-/* The bloom under it. An ellipse rather than a box-shadow — a shadow would
+/* The bloom under it. An ellipse rather than a box-shadow - a shadow would
    trace this 1px bar and give the glow flat top and bottom edges. */
 .edge::after {
   content: '';
@@ -295,7 +294,7 @@
   color: #fff;
 }
 
-/* The flagship occupies a 2x2 cell, so its type scales with it — small type
+/* The flagship occupies a 2x2 cell, so its type scales with it - small type
    in a large card is what makes the card read as empty. */
 .tall .title {
   font-family: var(--stack-display);
@@ -350,7 +349,7 @@
   font-size: 30px;
 }
 
-/* Large, in the gradient, sitting on the baseline — the way the reference sets
+/* Large, in the gradient, sitting on the baseline - the way the reference sets
    it. A small raised suffix reads as a typo when the unit is a word. */
 .unit {
   font-size: 0.52em;
@@ -388,7 +387,7 @@
   gap: 8px;
   font-size: var(--label-sm);
   font-weight: 700;
-  /* Tighter than --track-label — these are chips, set close on purpose. */
+  /* Tighter than --track-label - these are chips, set close on purpose. */
   letter-spacing: 0.12em;
   line-height: 1.3;
   text-transform: uppercase;

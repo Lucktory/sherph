@@ -1,4 +1,4 @@
-/* No `overflow: hidden` anywhere on this section — it would break the sticky
+/* No `overflow: hidden` anywhere on this section - it would break the sticky
    card stacking that gives the section its effect. */
 .designShow {
   position: relative;
@@ -124,7 +124,7 @@
 }
 
 /* Same glass plate as the projects grid. This was the identical solid purple
-   pill, doing the identical job over the identical kind of media — changing one
+   pill, doing the identical job over the identical kind of media - changing one
    without the other would have left the same device rendered two ways. */
 .cap .k {
   display: inline-flex;
@@ -153,7 +153,7 @@
   background: var(--grad);
 }
 
-/* Matched to the category plate beside it — same radius, fill and border, so
+/* Matched to the category plate beside it - same radius, fill and border, so
    the two read as one caption rather than a rectangle next to a capsule. */
 .cap .t {
   font-size: 13px;

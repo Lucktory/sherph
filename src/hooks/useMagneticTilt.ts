@@ -19,7 +19,7 @@ type MagneticTiltOptions = {
  * CSS can position a glow at the cursor without any further JS.
  *
  * GSAP owns the element's `transform` while this is active, so the element must
- * not also carry a `transform` in a CSS `:hover` rule — the inline style GSAP
+ * not also carry a `transform` in a CSS `:hover` rule - the inline style GSAP
  * writes would win and the CSS rule would silently stop applying.
  */
 export function useMagneticTilt<T extends HTMLElement>({

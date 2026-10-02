@@ -43,7 +43,7 @@ function Bars({
   );
 }
 
-/** Vertical ascending columns — growth over time. */
+/** Vertical ascending columns - growth over time. */
 function Columns({ bars }: { bars: NonNullable<ServiceCell['bars']> }) {
   return (
     <div className={styles.columns} aria-hidden="true">

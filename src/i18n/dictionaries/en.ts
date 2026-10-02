@@ -2,12 +2,14 @@ import type { Dictionary } from '@/i18n/types';
 
 export const en: Dictionary = {
   meta: {
-    title: 'sherpa · Web Portfolio',
+    title: 'sherpa · Custom web development',
     description:
-      'Senior full-stack web developer — UI/UX design, web development, SaaS platforms, e-commerce. From idea to live.',
+      'I build custom software for your business. Websites, online stores and the systems behind them, ready to run.',
   },
   nav: {
+    process: 'Process',
     services: 'Services',
+    designShow: 'Designs',
     projects: 'Projects',
     testimonials: 'Client Testimonial',
     stacks: 'Technology Stacks',
@@ -20,10 +22,10 @@ export const en: Dictionary = {
   // CONFIRM BEFORE LAUNCH: every number below is a placeholder shaped to fit the
   // layout. Replace each with something you can back up on a sales call.
   hero: {
-    tagline: 'Full-stack · Web, Mobile & AI',
-    heading: { lead: 'From first call to', grad: 'live in 6 weeks.' },
+    tagline: 'Websites · Online stores · Custom apps',
+    heading: { lead: 'Your site online', grad: 'in 6 weeks.' },
     description:
-      'I design, build and ship the whole product — and you see a working demo every Friday.',
+      'From our first call I design, build and launch the whole thing, and you see it working every Friday.',
     primaryCta: "See how I'd build yours",
     secondaryCta: 'View the work',
     stats: [
@@ -37,7 +39,7 @@ export const en: Dictionary = {
     kicker: 'My Process',
     heading: { lead: 'From idea to live,', grad: 'step by step.' },
     description:
-      'You always know exactly where your project stands — a clear four-step flow with demos and approvals at every stage. No black box, no surprises.',
+      'You always know exactly where your project stands - a clear four-step flow with demos and approvals at every stage. No black box, no surprises.',
     steps: [
       {
         title: 'Design',
@@ -48,7 +50,7 @@ export const en: Dictionary = {
       {
         title: 'Build MVP First',
         subtitle: 'Core product, live early',
-        description: 'A working MVP in weeks — you test it with real users while changes are still cheap.',
+        description: 'A working MVP in weeks - you test it with real users while changes are still cheap.',
         badge: 'Live demo in weeks',
       },
       {
@@ -62,7 +64,7 @@ export const en: Dictionary = {
         title: 'Test & Publish',
         subtitle: 'QA → deploy → live',
         description:
-          'Automated + manual QA across all cases, then deployment, monitoring — your product goes live.',
+          'Automated + manual QA across all cases, then deployment, monitoring - your product goes live.',
         badge: '+1 month free support',
       },
     ],
@@ -76,7 +78,7 @@ export const en: Dictionary = {
     kicker: 'Services',
     heading: { lead: 'Design. Build. Test.', grad: 'Launch.' },
     description:
-      'One senior engineer, end-to-end delivery. Every project runs from idea to live — designed beautifully, engineered carefully, and supported after launch.',
+      'One senior engineer, end-to-end delivery. Every project runs from idea to live - designed beautifully, engineered carefully, and supported after launch.',
     // CONFIRM BEFORE LAUNCH: every figure in these metrics is a placeholder.
     // Replace each with something you can back up on a sales call.
     items: [
@@ -96,7 +98,7 @@ export const en: Dictionary = {
         title: 'Wonderful Design',
         subtitle: 'UI/UX design',
         description:
-          'Beautiful, intuitive interfaces designed around your users — every screen crafted to engage and convert.',
+          'Beautiful, intuitive interfaces designed around your users - every screen crafted to engage and convert.',
         metric: { value: '100', unit: '%', caption: 'Approved before code' },
         points: ['Web & mobile', 'Figma design systems', 'Built to convert'],
       },
@@ -104,7 +106,7 @@ export const en: Dictionary = {
         title: 'Lightning Fast Load Times',
         subtitle: 'Performance',
         description:
-          'Fast load times, smooth interactions, and stability under load — engineered for a flawless experience.',
+          'Fast load times, smooth interactions, and stability under load - engineered for a flawless experience.',
         metric: { value: '1.2', unit: 's', caption: 'Average load time' },
         points: ['Optimised APIs', 'Responsive everywhere'],
       },
@@ -112,7 +114,7 @@ export const en: Dictionary = {
         title: 'Every Feature Tested',
         subtitle: 'Quality assurance',
         description:
-          'Every feature is tested across all cases before release — automated tests, edge cases, and real-device QA.',
+          'Every feature is tested across all cases before release - automated tests, edge cases, and real-device QA.',
         metric: { value: '100', unit: '%', caption: 'Test coverage' },
         points: ['Unit & E2E tests', 'Cross-browser QA', 'Code review'],
       },
@@ -128,7 +130,7 @@ export const en: Dictionary = {
         title: 'Free 1-Month Support',
         subtitle: 'After launch',
         description:
-          'Launch is the beginning, not the end. One month of free support — fixes, tweaks, and guidance included.',
+          'Launch is the beginning, not the end. One month of free support - fixes, tweaks, and guidance included.',
         metric: { value: '30', unit: 'days', caption: 'Free support after launch' },
         points: ['Bug fixes at no cost', 'Monitoring set up', 'Handover docs'],
       },
@@ -143,7 +145,7 @@ export const en: Dictionary = {
 
      STILL NEEDS SHERPA: the "role" and "problems" fields are his own words on
      IPC Analyze, and the role is confirmed on ANIMA. On the other six they were
-     inferred from what each site does. Correct them — the problems are the part
+     inferred from what each site does. Correct them - the problems are the part
      that actually shows skill, and they are the one thing a website cannot
      tell you.
 
@@ -170,7 +172,7 @@ export const en: Dictionary = {
       problemsLabel: 'Problems solved',
     },
     items: [
-      // Sherpa's own words, transcribed from the entry he supplied — the role and
+      // Sherpa's own words, transcribed from the entry he supplied - the role and
       // all four problems are his, not inferred from a website. The only open
       // questions are the project name (taken from the watermark in the
       // screenshot) and whether there is a public URL.
@@ -178,7 +180,7 @@ export const en: Dictionary = {
         title: 'IPC Analyze',
         category: 'Platform',
         description:
-          'Property-management system for an Argentine agency — IPC-indexed rent, owner settlements, stamp tax and arrears across 98 live contracts.',
+          'Property-management system for an Argentine agency - IPC-indexed rent, owner settlements, stamp tax and arrears across 98 live contracts.',
         stack: 'Next.js · Supabase · Argentina',
         metric: { value: '98', caption: 'Live contracts' },
         year: '2026',
@@ -187,7 +189,7 @@ export const en: Dictionary = {
         problems: [
           {
             problem: 'Rent in Argentina isn’t a number, it’s a formula.',
-            solution: 'Contracts adjust by accumulated IPC on their own cadence, so the system stores an anchor and projects the live value forward — and says so on screen when the two disagree.',
+            solution: 'Contracts adjust by accumulated IPC on their own cadence, so the system stores an anchor and projects the live value forward - and says so on screen when the two disagree.',
           },
           {
             problem: 'Some of the money an agency handles belongs to nobody in it.',
@@ -204,19 +206,19 @@ export const en: Dictionary = {
         ],
       },
       // REAL PROJECT. Scope confirmed by Sherpa: he built the custom THEME.
-      // CONFIRM THE PROBLEMS — they were inferred from what the live storefront
+      // CONFIRM THE PROBLEMS - they were inferred from what the live storefront
       // does, not from Sherpa, so they describe the result accurately but may
       // not be the problems he actually set out to solve.
       {
         title: 'ANIMA',
         category: 'E-commerce',
         description:
-          'Custom Shopify theme for a Colombian athleisure label — built around colour variants, COP pricing and Addi instalments.',
+          'Custom Shopify theme for a Colombian athleisure label - built around colour variants, COP pricing and Addi instalments.',
         stack: 'Shopify · Liquid · JavaScript · Colombia',
         metric: { value: '24 h', caption: 'Bogotá delivery' },
         year: '2025',
         liveUrl: 'https://animastore.co',
-        role: 'Built the custom Shopify theme — storefront, sections and product templates.',
+        role: 'Built the custom Shopify theme - storefront, sections and product templates.',
         problems: [
           {
             problem: 'A stock theme shows one image per product, so colourways stayed hidden until the product page.',
@@ -224,7 +226,7 @@ export const en: Dictionary = {
           },
           {
             problem: 'One long catalogue buried what customers had actually come for.',
-            solution: 'Split the range into garment-type collections — sets, tops, leggings, jumpsuits, dresses, jackets — so the nav matches how people shop.',
+            solution: 'Split the range into garment-type collections - sets, tops, leggings, jumpsuits, dresses, jackets - so the nav matches how people shop.',
           },
           {
             problem: 'Limited-reference promotions needed urgency the merchant could run without a developer.',
@@ -253,7 +255,7 @@ export const en: Dictionary = {
         problems: [
           {
             problem: 'Someone visiting Japan for the first time cannot name the ryokan they want, so a search box is useless to them.',
-            solution: 'Made discovery browse-first — by region and by travel theme — and left keyword search as the fallback rather than the entry point.',
+            solution: 'Made discovery browse-first - by region and by travel theme - and left keyword search as the fallback rather than the entry point.',
           },
           {
             problem: 'The audience is Japanese, English-speaking and Traditional Chinese at the same time.',
@@ -261,11 +263,11 @@ export const en: Dictionary = {
           },
           {
             problem: 'Lesser-known inns have no brand recognition to trade on.',
-            solution: 'Gave each property editorial treatment — regional context, journal pieces and trip themes — instead of a listings row.',
+            solution: 'Gave each property editorial treatment - regional context, journal pieces and trip themes - instead of a listings row.',
           },
           {
             problem: 'For an overseas guest the practical details decide the booking, not the photography.',
-            solution: 'Tagged every stay with the facets that actually matter — English spoken, reachable without a car, free parking — and made them filterable.',
+            solution: 'Tagged every stay with the facets that actually matter - English spoken, reachable without a car, free parking - and made them filterable.',
           },
         ],
       },
@@ -273,7 +275,7 @@ export const en: Dictionary = {
         title: 'LE SILLAGE',
         category: 'E-commerce',
         description:
-          'Kyoto niche-fragrance shop on Shopify — brand-first navigation across 86 collections, with multi-currency for overseas buyers.',
+          'Kyoto niche-fragrance shop on Shopify - brand-first navigation across 86 collections, with multi-currency for overseas buyers.',
         stack: 'Shopify · Liquid · Klaviyo · Japan',
         metric: { value: '86', caption: 'Collections' },
         year: '2025',
@@ -290,7 +292,7 @@ export const en: Dictionary = {
           },
           {
             problem: 'Fragrance demand is seasonal, and a blog post does not sell anything.',
-            solution: 'Turned the seasonal edits into merchandisable collections — summer scents, choose-by-season — rather than editorial.',
+            solution: 'Turned the seasonal edits into merchandisable collections - summer scents, choose-by-season - rather than editorial.',
           },
           {
             problem: 'The shop sells well beyond Kyoto.',
@@ -302,7 +304,7 @@ export const en: Dictionary = {
         title: 'Casa Peluda',
         category: 'E-commerce',
         description:
-          'Argentine pet-shop catalogue on WooCommerce — 278 products faceted by animal, category and brand, with checkout handed to Mercado Libre.',
+          'Argentine pet-shop catalogue on WooCommerce - 278 products faceted by animal, category and brand, with checkout handed to Mercado Libre.',
         stack: 'WordPress · WooCommerce · PHP · Argentina',
         metric: { value: '278', caption: 'Products' },
         year: '2025',
@@ -323,7 +325,7 @@ export const en: Dictionary = {
           },
           {
             problem: 'A price-led catalogue has nothing to rank on.',
-            solution: 'Added a care blog — seasonal shedding, mixed feeding — to pull the search traffic product pages never will.',
+            solution: 'Added a care blog - seasonal shedding, mixed feeding - to pull the search traffic product pages never will.',
           },
         ],
       },
@@ -331,7 +333,7 @@ export const en: Dictionary = {
         title: 'Velaris',
         category: 'Platform',
         description:
-          'Travel operating system for South America — one live supply graph that hotels, advisors and trip leaders all book from.',
+          'Travel operating system for South America - one live supply graph that hotels, advisors and trip leaders all book from.',
         stack: 'Next.js · Turbopack · Tailwind · South America',
         metric: { value: '3', caption: 'Audience tracks' },
         year: '2025',
@@ -360,7 +362,7 @@ export const en: Dictionary = {
         title: 'Liberta Perfume',
         category: 'E-commerce',
         description:
-          'Made-to-order Japanese perfumery on Shopify — bespoke blending, an online scent diagnosis and in-store booking in one storefront.',
+          'Made-to-order Japanese perfumery on Shopify - bespoke blending, an online scent diagnosis and in-store booking in one storefront.',
         stack: 'Shopify · Liquid · GSAP · Japan',
         metric: { value: '1:1', caption: 'Bespoke blending' },
         year: '2025',
@@ -381,7 +383,7 @@ export const en: Dictionary = {
           },
           {
             problem: 'For this brand the argument is the product.',
-            solution: 'Gave the manifesto — the democratisation of scent — a place in the storefront instead of burying it in an About page.',
+            solution: 'Gave the manifesto - the democratisation of scent - a place in the storefront instead of burying it in an About page.',
           },
         ],
       },
@@ -389,7 +391,7 @@ export const en: Dictionary = {
         title: 'Aguadulce',
         category: 'E-commerce',
         description:
-          'Guatemalan concept store on Shopify — 24 Latin American designers, bilingual, with WhatsApp carrying the end of the sale.',
+          'Guatemalan concept store on Shopify - 24 Latin American designers, bilingual, with WhatsApp carrying the end of the sale.',
         stack: 'Shopify · View Transitions · Web Components · Guatemala',
         metric: { value: '24', caption: 'Designers' },
         year: '2025',
@@ -398,7 +400,7 @@ export const en: Dictionary = {
         problems: [
           {
             problem: 'A multi-designer concept store gets browsed by designer as often as by garment.',
-            solution: 'Built both routes off the same catalogue — 24 designer collections alongside the category grid.',
+            solution: 'Built both routes off the same catalogue - 24 designer collections alongside the category grid.',
           },
           {
             problem: 'In Guatemala the sale usually finishes on WhatsApp, where it becomes invisible.',
@@ -419,7 +421,7 @@ export const en: Dictionary = {
   // CONFIRM BEFORE LAUNCH: this is placeholder copy. The whole point of this
   // CONFIRM BEFORE LAUNCH: the copy and figures below are placeholders. This is
   // ============================================================
-  // PLACEHOLDER TESTIMONIALS — DO NOT SHIP.
+  // PLACEHOLDER TESTIMONIALS - DO NOT SHIP.
   //
   // Unlike the placeholder numbers elsewhere, these are attributed
   // endorsements. Publishing them would be inventing reviews from people who
@@ -432,7 +434,7 @@ export const en: Dictionary = {
     kicker: 'Technology Stacks',
     heading: { lead: 'Tools I ship', grad: 'with.' },
     description:
-      'A modern, production-proven stack — the right technology for each product, front to back.',
+      'A modern, production-proven stack - the right technology for each product, front to back.',
     groups: { frontend: 'Front-end', backend: 'Back-end', tools: 'Tools & Cloud' },
     hint: 'Hover to pause',
   },
@@ -528,7 +530,7 @@ export const en: Dictionary = {
   designShow: {
     kicker: 'Design Show',
     heading: { lead: 'Designs that make users', grad: 'stare.' },
-    description: "Real interfaces I've designed and shipped — click any piece to view it full-screen.",
+    description: "Real interfaces I've designed and shipped - click any piece to view it full-screen.",
     items: [
       { tag: 'Web Redesign', title: 'Airline Website Redesign', alt: 'Airline website redesign' },
       { tag: 'Mobile App UI', title: 'Delivery Driver App', alt: 'Delivery driver app UI' },

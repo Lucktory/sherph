@@ -83,7 +83,7 @@ function MarqueeRow({ group, label, index }: { group: StackGroup; label: string;
     { scope: rowRef },
   );
 
-  // Two passes of the same set. The second is decorative — screen readers and
+  // Two passes of the same set. The second is decorative - screen readers and
   // the tab order only ever see the first.
   const passes = [0, 1];
 
@@ -131,7 +131,7 @@ export function Stack() {
         return;
       }
 
-      // fromTo, never from — `from` reads its destination off the element, and
+      // fromTo, never from - `from` reads its destination off the element, and
       // StrictMode's double-mounted effects make the second pass read back the
       // start value, giving a tween that runs 0 -> 0.
       gsap

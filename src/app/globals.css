@@ -47,7 +47,7 @@
      Raleway's 0.71em (measured, not from a spec sheet), so every label renders
      ~2.8% shorter on the swap, and 9.5px was already under-set.
 
-     Tracking runs the conventional way round — the smaller step gets MORE of
+     Tracking runs the conventional way round - the smaller step gets MORE of
      it, since tracking is compensating for the loss of counter space. */
   --label-sm: 11px;
   --label-lg: 12.5px;
@@ -55,7 +55,7 @@
   --track-label-lg: 0.14em; /* the 12.5px step */
 }
 
-/* Light sections — token overrides, so the same components invert cleanly. */
+/* Light sections - token overrides, so the same components invert cleanly. */
 section.light {
   background: #f7f7fb;
   color: #27273d;
@@ -137,7 +137,7 @@ section {
 }
 
 /* ---------- section headers ---------- */
-/* Micro-label tier — see --track-label. Stays on the UI face: a serif at
+/* Micro-label tier - see --track-label. Stays on the UI face: a serif at
    12.5px under heavy tracking dissolves before it reads as words. */
 .kicker {
   display: inline-flex;
@@ -164,7 +164,7 @@ section {
   background: var(--grad);
 }
 
-/* The shared section heading — every section uses it, so this one rule is
+/* The shared section heading - every section uses it, so this one rule is
    most of the display face's presence on the page. line-height 1.12, not the
    1.08 it had: Fraunces' accents sit higher above cap height than Raleway's,
    and Spanish/Portuguese headings are full of them (SOLUÇÕES, DISEÑADOS). */

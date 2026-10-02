@@ -2,7 +2,7 @@
    (portrait, bio, stat grid, CTA row) is gone on purpose, and so is the dim
    overlay and the "hover to play" prompt that sat on top of it.
 
-   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   Deliberately NOT `overflow: hidden` - that makes this a scroll container, and
    ScrollTrigger would then treat it as the scroller for every trigger inside it,
    so those triggers could never fire. The frame clips itself. */
 .about {

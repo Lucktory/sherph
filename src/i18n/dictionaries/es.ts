@@ -2,12 +2,14 @@ import type { Dictionary } from '@/i18n/types';
 
 export const es: Dictionary = {
   meta: {
-    title: 'sherpa · Portafolio Web',
+    title: 'sherpa · Desarrollo web a medida',
     description:
-      'Desarrollador web full-stack senior — diseño UI/UX, desarrollo web, plataformas SaaS, e-commerce. De la idea a producción.',
+      'Desarrollo tu software a medida. Páginas web, tiendas online y sistemas para tu negocio, listos para funcionar.',
   },
   nav: {
+    process: 'Proceso',
     services: 'Servicios',
+    designShow: 'Diseños',
     projects: 'Proyectos',
     testimonials: 'Testimonios',
     stacks: 'Tecnologías',
@@ -18,10 +20,10 @@ export const es: Dictionary = {
     languageLabel: 'Idioma',
   },
   hero: {
-    tagline: 'Full-stack · Web, Móvil e IA',
-    heading: { lead: 'De la primera llamada a', grad: 'producción en 6 semanas.' },
+    tagline: 'Web · Tiendas online · Apps a medida',
+    heading: { lead: 'Tu web online', grad: 'en 6 semanas.' },
     description:
-      'Diseño, construyo y lanzo el producto completo — y cada viernes ves una demo funcionando.',
+      'Desde la primera llamada diseño, construyo y lanzo todo, y cada viernes lo ves funcionando.',
     primaryCta: 'Mira cómo lo construiría',
     secondaryCta: 'Ver el trabajo',
     stats: [
@@ -35,7 +37,7 @@ export const es: Dictionary = {
     kicker: 'Mi Proceso',
     heading: { lead: 'De la idea a producción,', grad: 'paso a paso.' },
     description:
-      'Siempre sabes exactamente en qué punto está tu proyecto — un flujo claro de cuatro pasos con demos y aprobaciones en cada etapa. Sin cajas negras, sin sorpresas.',
+      'Siempre sabes exactamente en qué punto está tu proyecto - un flujo claro de cuatro pasos con demos y aprobaciones en cada etapa. Sin cajas negras, sin sorpresas.',
     steps: [
       {
         title: 'Diseño',
@@ -47,7 +49,7 @@ export const es: Dictionary = {
         title: 'MVP Primero',
         subtitle: 'Producto core, en vivo pronto',
         description:
-          'Un MVP funcional en semanas — lo pruebas con usuarios reales mientras los cambios aún son baratos.',
+          'Un MVP funcional en semanas - lo pruebas con usuarios reales mientras los cambios aún son baratos.',
         badge: 'Demo en vivo en semanas',
       },
       {
@@ -61,7 +63,7 @@ export const es: Dictionary = {
         title: 'Pruebas y Publicación',
         subtitle: 'QA → deploy → producción',
         description:
-          'QA automatizado y manual en todos los casos, luego deployment y monitoreo — tu producto sale a producción.',
+          'QA automatizado y manual en todos los casos, luego deployment y monitoreo - tu producto sale a producción.',
         badge: '+1 mes de soporte gratis',
       },
     ],
@@ -75,7 +77,7 @@ export const es: Dictionary = {
     kicker: 'Servicios',
     heading: { lead: 'Diseñar. Construir. Probar.', grad: 'Lanzar.' },
     description:
-      'Un ingeniero senior con entrega end-to-end. Cada proyecto va de la idea a producción — diseñado con belleza, construido con cuidado y con soporte tras el lanzamiento.',
+      'Un ingeniero senior con entrega end-to-end. Cada proyecto va de la idea a producción - diseñado con belleza, construido con cuidado y con soporte tras el lanzamiento.',
     items: [
       {
         title: 'Entrega 2.5× Más Rápida',
@@ -93,7 +95,7 @@ export const es: Dictionary = {
         title: 'Diseño Maravilloso',
         subtitle: 'Diseño UI/UX',
         description:
-          'Interfaces hermosas e intuitivas diseñadas para tus usuarios — cada pantalla creada para atraer y convertir.',
+          'Interfaces hermosas e intuitivas diseñadas para tus usuarios - cada pantalla creada para atraer y convertir.',
         metric: { value: '100', unit: '%', caption: 'Aprobado antes del código' },
         points: ['Web y móvil', 'Design systems en Figma', 'Hecho para convertir'],
       },
@@ -101,7 +103,7 @@ export const es: Dictionary = {
         title: 'Carga Ultrarrápida',
         subtitle: 'Rendimiento',
         description:
-          'Carga rápida, interacciones fluidas y estabilidad bajo carga — ingeniería para una experiencia sin fallas.',
+          'Carga rápida, interacciones fluidas y estabilidad bajo carga - ingeniería para una experiencia sin fallas.',
         metric: { value: '1,2', unit: 's', caption: 'Tiempo de carga medio' },
         points: ['APIs optimizadas', 'Responsive en todo'],
       },
@@ -109,7 +111,7 @@ export const es: Dictionary = {
         title: 'Cada Función Probada',
         subtitle: 'Control de calidad',
         description:
-          'Cada funcionalidad se prueba en todos los casos antes del release — tests automatizados, casos límite y QA real.',
+          'Cada funcionalidad se prueba en todos los casos antes del release - tests automatizados, casos límite y QA real.',
         metric: { value: '100', unit: '%', caption: 'Cobertura de tests' },
         points: ['Tests unitarios y E2E', 'QA cross-browser', 'Code review'],
       },
@@ -125,7 +127,7 @@ export const es: Dictionary = {
         title: '1 Mes de Soporte Gratis',
         subtitle: 'Después del lanzamiento',
         description:
-          'El lanzamiento es el comienzo. Un mes de soporte gratuito — correcciones, ajustes y acompañamiento incluidos.',
+          'El lanzamiento es el comienzo. Un mes de soporte gratuito - correcciones, ajustes y acompañamiento incluidos.',
         metric: { value: '30', unit: 'días', caption: 'Soporte gratis tras el lanzamiento' },
         points: ['Bugs sin costo', 'Monitoreo configurado', 'Documentación'],
       },
@@ -165,7 +167,7 @@ export const es: Dictionary = {
         title: 'IPC Analyze',
         category: 'Plataforma',
         description:
-          'Sistema de administración para una inmobiliaria argentina — alquileres indexados por IPC, liquidación a propietarios, sellado y morosidad sobre 98 contratos activos.',
+          'Sistema de administración para una inmobiliaria argentina - alquileres indexados por IPC, liquidación a propietarios, sellado y morosidad sobre 98 contratos activos.',
         stack: 'Next.js · Supabase · Argentina',
         metric: { value: '98', caption: 'Contratos activos' },
         year: '2026',
@@ -174,7 +176,7 @@ export const es: Dictionary = {
         problems: [
           {
             problem: 'En Argentina el alquiler no es un número, es una fórmula.',
-            solution: 'Los contratos se ajustan por IPC acumulado con su propia cadencia, así que el sistema guarda un ancla y proyecta el valor vigente hacia adelante — y lo dice en pantalla cuando los dos no coinciden.',
+            solution: 'Los contratos se ajustan por IPC acumulado con su propia cadencia, así que el sistema guarda un ancla y proyecta el valor vigente hacia adelante - y lo dice en pantalla cuando los dos no coinciden.',
           },
           {
             problem: 'Parte del dinero que administra una inmobiliaria no es de nadie dentro de ella.',
@@ -191,13 +193,13 @@ export const es: Dictionary = {
         ],
       },
       // PROYECTO REAL. Alcance confirmado: Sherpa construyó el TEMA a medida.
-      // CONFIRMAR LOS PROBLEMAS — se dedujeron de lo que hace la tienda en
+      // CONFIRMAR LOS PROBLEMAS - se dedujeron de lo que hace la tienda en
       // vivo, no de Sherpa.
       {
         title: 'ANIMA',
         category: 'E-commerce',
         description:
-          'Tema Shopify a medida para una marca colombiana de ropa deportiva — construido alrededor de variantes de color, precios en COP y cuotas con Addi.',
+          'Tema Shopify a medida para una marca colombiana de ropa deportiva - construido alrededor de variantes de color, precios en COP y cuotas con Addi.',
         stack: 'Shopify · Liquid · JavaScript · Colombia',
         metric: { value: '24 h', caption: 'Entrega en Bogotá' },
         year: '2025',
@@ -210,7 +212,7 @@ export const es: Dictionary = {
           },
           {
             problem: 'Un catálogo largo enterraba justo lo que la clienta venía a buscar.',
-            solution: 'Separé la gama en colecciones por tipo de prenda —sets, tops, leggins, enterizos, vestidos, chaquetas— para que el menú siga cómo se compra.',
+            solution: 'Separé la gama en colecciones por tipo de prenda (sets, tops, leggins, enterizos, vestidos, chaquetas) para que el menú siga cómo se compra.',
           },
           {
             problem: 'Las promociones de referencias limitadas necesitaban urgencia sin depender de un desarrollador.',
@@ -239,7 +241,7 @@ export const es: Dictionary = {
         problems: [
           {
             problem: 'Quien visita Japón por primera vez no sabe el nombre del ryokan que quiere, así que un buscador no le sirve.',
-            solution: 'Puse el descubrimiento por delante —por región y por tema de viaje— y dejé la búsqueda por palabra como respaldo, no como puerta de entrada.',
+            solution: 'Puse el descubrimiento por delante (por región y por tema de viaje) y dejé la búsqueda por palabra como respaldo, no como puerta de entrada.',
           },
           {
             problem: 'El público es japonés, angloparlante y de chino tradicional al mismo tiempo.',
@@ -247,11 +249,11 @@ export const es: Dictionary = {
           },
           {
             problem: 'Las posadas poco conocidas no tienen una marca con la que competir.',
-            solution: 'Di a cada alojamiento un tratamiento editorial —contexto regional, artículos y temas de viaje— en lugar de una fila de listado.',
+            solution: 'Di a cada alojamiento un tratamiento editorial (contexto regional, artículos y temas de viaje) en lugar de una fila de listado.',
           },
           {
             problem: 'Para un huésped extranjero la reserva la deciden los detalles prácticos, no las fotos.',
-            solution: 'Etiqueté cada estancia con lo que de verdad importa —se habla inglés, se llega sin coche, parking gratis— y lo hice filtrable.',
+            solution: 'Etiqueté cada estancia con lo que de verdad importa (se habla inglés, se llega sin coche, parking gratis) y lo hice filtrable.',
           },
         ],
       },
@@ -259,7 +261,7 @@ export const es: Dictionary = {
         title: 'LE SILLAGE',
         category: 'E-commerce',
         description:
-          'Perfumería de nicho de Kioto sobre Shopify — navegación por casa a través de 86 colecciones y multi-divisa para el comprador extranjero.',
+          'Perfumería de nicho de Kioto sobre Shopify - navegación por casa a través de 86 colecciones y multi-divisa para el comprador extranjero.',
         stack: 'Shopify · Liquid · Klaviyo · Japón',
         metric: { value: '86', caption: 'Colecciones' },
         year: '2025',
@@ -276,7 +278,7 @@ export const es: Dictionary = {
           },
           {
             problem: 'La demanda de fragancia es estacional, y una entrada de blog no vende.',
-            solution: 'Pasé las selecciones de temporada a colecciones comercializables —aromas de verano, elegir por estación— en vez de contenido editorial.',
+            solution: 'Pasé las selecciones de temporada a colecciones comercializables (aromas de verano, elegir por estación) en vez de contenido editorial.',
           },
           {
             problem: 'La tienda vende mucho más allá de Kioto.',
@@ -288,7 +290,7 @@ export const es: Dictionary = {
         title: 'Casa Peluda',
         category: 'E-commerce',
         description:
-          'Catálogo de pet shop argentino sobre WooCommerce — 278 productos filtrados por animal, categoría y marca, con el checkout derivado a Mercado Libre.',
+          'Catálogo de pet shop argentino sobre WooCommerce - 278 productos filtrados por animal, categoría y marca, con el checkout derivado a Mercado Libre.',
         stack: 'WordPress · WooCommerce · PHP · Argentina',
         metric: { value: '278', caption: 'Productos' },
         year: '2025',
@@ -309,7 +311,7 @@ export const es: Dictionary = {
           },
           {
             problem: 'Un catálogo guiado por precio no tiene con qué posicionar.',
-            solution: 'Sumé un blog de cuidados —muda de pelo, alimentación mixta— para traer el tráfico de búsqueda que las fichas de producto nunca traerán.',
+            solution: 'Sumé un blog de cuidados (muda de pelo, alimentación mixta) para traer el tráfico de búsqueda que las fichas de producto nunca traerán.',
           },
         ],
       },
@@ -317,7 +319,7 @@ export const es: Dictionary = {
         title: 'Velaris',
         category: 'Plataforma',
         description:
-          'Sistema operativo de viajes para Sudamérica — un único grafo de proveedores en vivo del que reservan hoteles, asesores y líderes de viaje.',
+          'Sistema operativo de viajes para Sudamérica - un único grafo de proveedores en vivo del que reservan hoteles, asesores y líderes de viaje.',
         stack: 'Next.js · Turbopack · Tailwind · Sudamérica',
         metric: { value: '3', caption: 'Públicos' },
         year: '2025',
@@ -346,7 +348,7 @@ export const es: Dictionary = {
         title: 'Liberta Perfume',
         category: 'E-commerce',
         description:
-          'Perfumería japonesa a medida sobre Shopify — creación uno a uno, diagnóstico olfativo en línea y reserva en tienda, todo en la misma web.',
+          'Perfumería japonesa a medida sobre Shopify - creación uno a uno, diagnóstico olfativo en línea y reserva en tienda, todo en la misma web.',
         stack: 'Shopify · Liquid · GSAP · Japón',
         metric: { value: '1:1', caption: 'Creación a medida' },
         year: '2025',
@@ -367,7 +369,7 @@ export const es: Dictionary = {
           },
           {
             problem: 'En esta marca el argumento es el producto.',
-            solution: 'Le di al manifiesto —la democratización del aroma— un lugar en la tienda en vez de enterrarlo en una página “Acerca de”.',
+            solution: 'Le di al manifiesto (la democratización del aroma) un lugar en la tienda en vez de enterrarlo en una página “Acerca de”.',
           },
         ],
       },
@@ -375,7 +377,7 @@ export const es: Dictionary = {
         title: 'Aguadulce',
         category: 'E-commerce',
         description:
-          'Concept store guatemalteca sobre Shopify — 24 diseñadores latinoamericanos, bilingüe, con WhatsApp cerrando la venta.',
+          'Concept store guatemalteca sobre Shopify - 24 diseñadores latinoamericanos, bilingüe, con WhatsApp cerrando la venta.',
         stack: 'Shopify · View Transitions · Web Components · Guatemala',
         metric: { value: '24', caption: 'Diseñadores' },
         year: '2025',
@@ -406,7 +408,7 @@ export const es: Dictionary = {
     kicker: 'Tecnologías',
     heading: { lead: 'Herramientas con las que', grad: 'construyo.' },
     description:
-      'Un stack moderno y probado en producción — la tecnología adecuada para cada producto, de principio a fin.',
+      'Un stack moderno y probado en producción - la tecnología adecuada para cada producto, de principio a fin.',
     groups: { frontend: 'Front-end', backend: 'Back-end', tools: 'Herramientas y Cloud' },
     hint: 'Pasa el cursor para pausar',
   },
@@ -501,7 +503,7 @@ export const es: Dictionary = {
     kicker: 'Design Show',
     heading: { lead: 'Diseños que hacen', grad: 'mirar.' },
     description:
-      'Interfaces reales que diseñé y llevé a producción — haz clic para verlas a pantalla completa.',
+      'Interfaces reales que diseñé y llevé a producción - haz clic para verlas a pantalla completa.',
     items: [
       { tag: 'Rediseño Web', title: 'Rediseño Web de Aerolínea', alt: 'Rediseño web de aerolínea' },
       { tag: 'UI de App Móvil', title: 'App de Repartidores', alt: 'UI de app de repartidores' },

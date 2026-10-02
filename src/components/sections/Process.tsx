@@ -79,8 +79,7 @@ export function Process() {
 
       // fromTo everywhere, never from: `from` infers its destination by reading
       // the element's current value, and under StrictMode's double-mounted
-      // effects that reads back the start value the first pass left behind —
-      // giving a tween that runs 0 -> 0 and never reveals anything.
+      // effects that reads back the start value the first pass left behind - // giving a tween that runs 0 -> 0 and never reveals anything.
       //
       // Negative offsets overlap the steps so the section reads as one motion
       // rather than six queued animations.
@@ -132,7 +131,7 @@ export function Process() {
           },
         );
 
-        // Idle while the section is off screen — no point burning frames on it.
+        // Idle while the section is off screen - no point burning frames on it.
         ScrollTrigger.create({
           trigger: section,
           start: 'top bottom',

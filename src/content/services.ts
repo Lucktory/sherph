@@ -36,7 +36,7 @@ export type ServiceCell = {
 
 /**
  * Order here is the order on screen and drives the 01–06 numbering. It must
- * stay in step with `services.items` in every dictionary — index for index, and
+ * stay in step with `services.items` in every dictionary - index for index, and
  * DOM order decides where auto-placement puts each cell, so reordering one
  * without the other will break the grid.
  *
@@ -45,26 +45,26 @@ export type ServiceCell = {
  * be translated.
  */
 export const serviceCells: readonly ServiceCell[] = [
-  // 01 — Faster delivery. Two labelled bars: a typical timeline against yours.
+  // 01 - Faster delivery. Two labelled bars: a typical timeline against yours.
   {
     span: 'tall',
     visual: 'bars',
     bars: [{ value: 100 }, { value: 38, highlight: true }],
     chipIcons: ['bolt', 'code', 'shield'],
   },
-  // 02 — Design.
+  // 02 - Design.
   { span: 'cell', visual: 'palette' },
-  // 03 — Performance. The ring carries its own figure, so the cell's metric
+  // 03 - Performance. The ring carries its own figure, so the cell's metric
   // reports load time instead and the two do not repeat each other.
   { span: 'cell', visual: 'gauge', gauge: 98 },
-  // 04 — Quality.
+  // 04 - Quality.
   { span: 'cell', visual: 'checks' },
-  // 05 — SEO growth.
+  // 05 - SEO growth.
   {
     span: 'cell',
     visual: 'columns',
     bars: [{ value: 20 }, { value: 34 }, { value: 50 }, { value: 72 }, { value: 100, highlight: true }],
   },
-  // 06 — Support, in the short bottom strip.
+  // 06 - Support, in the short bottom strip.
   { span: 'strip', visual: 'days', days: 30 },
 ] as const;

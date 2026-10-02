@@ -45,8 +45,8 @@ export type Tech = {
   /**
    * Colour the logo takes on hover.
    *
-   * Usually the official brand hex. Several brands are near-black — Next.js is
-   * #000000, GitHub #181717, Express #0A0A0A, Vercel #000000 — and would be
+   * Usually the official brand hex. Several brands are near-black - Next.js is
+   * #000000, GitHub #181717, Express #0A0A0A, Vercel #000000 - and would be
    * invisible on this panel, so those use a light neutral or the brand's
    * secondary colour instead. Trading exact brand fidelity for being visible
    * at all is the right way round.

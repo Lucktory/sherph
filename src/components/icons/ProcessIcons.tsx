@@ -12,7 +12,7 @@ export function FlowGradientDefs() {
 {/*
           userSpaceOnUse, not the default objectBoundingBox: a perfectly
           horizontal or vertical stroke has a zero-height or zero-width bounding
-          box, and a bounding-box gradient on one of those is degenerate — the
+          box, and a bounding-box gradient on one of those is degenerate - the
           element simply is not painted. That silently erased the equator line
           of the globe icon. Coordinates match the 24-unit viewBox every icon
           here uses, which also gives each icon one gradient across the whole
@@ -64,7 +64,7 @@ function Icon({ children }: { children: ReactNode }) {
  */
 const draw = { pathLength: 1 } as const;
 
-/** Pen tool — the design step. */
+/** Pen tool - the design step. */
 function DesignIcon() {
   return (
     <Icon>
@@ -75,7 +75,7 @@ function DesignIcon() {
   );
 }
 
-/** Rocket — the MVP step. */
+/** Rocket - the MVP step. */
 function MvpIcon() {
   return (
     <Icon>
@@ -87,7 +87,7 @@ function MvpIcon() {
   );
 }
 
-/** Layers — building out the full requirement list. */
+/** Layers - building out the full requirement list. */
 function RequirementsIcon() {
   return (
     <Icon>
@@ -98,7 +98,7 @@ function RequirementsIcon() {
   );
 }
 
-/** Shield with a check — QA and launch. */
+/** Shield with a check - QA and launch. */
 function LaunchIcon() {
   return (
     <Icon>

@@ -116,7 +116,7 @@ export function Services() {
         },
       );
 
-      // fromTo, never from — `from` reads its destination off the element, and
+      // fromTo, never from - `from` reads its destination off the element, and
       // StrictMode's double-mounted effects make the second pass read back the
       // start value, giving a tween that runs 0 -> 0.
       const tl = gsap.timeline({

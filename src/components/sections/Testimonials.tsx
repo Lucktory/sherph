@@ -73,7 +73,7 @@ export function Testimonials() {
         return;
       }
 
-      // fromTo, never from — `from` reads its destination off the element, and
+      // fromTo, never from - `from` reads its destination off the element, and
       // StrictMode's double-mounted effects make the second pass read back the
       // start value, giving a tween that runs 0 -> 0.
       gsap
@@ -134,7 +134,7 @@ export function Testimonials() {
               >
                 <Quote className={styles.quoteMark} aria-hidden="true" />
 
-                {/* Stars only when the client actually gave a number — see the
+                {/* Stars only when the client actually gave a number - see the
                     note on `rating` in i18n/types.ts. */}
                 <div className={styles.meta}>
                   {item.rating ? (

@@ -1,5 +1,5 @@
 /* Positioning context for the interactive mesh behind the content.
-   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   Deliberately NOT `overflow: hidden` - that makes this a scroll container, and
    ScrollTrigger would then treat it as the scroller for every trigger inside it,
    so those triggers could never fire. */
 /* One step lighter than Services, and no background texture: six opaque cards
@@ -30,7 +30,7 @@
 /* ---------- card ---------- */
 /* Entrance choreography lives in GSAP (Projects.tsx). GSAP writes inline
    transforms, which outrank CSS, so nothing here may set `transform` in a
-   `:hover` rule — only colour and shadow. */
+   `:hover` rule - only colour and shadow. */
 .card {
   position: relative;
   display: flex;
@@ -50,7 +50,7 @@
 }
 
 /* The whole card is one button. z-index 4 puts it over the tag and metric
-   (z-index 2) and the lit edge (3), so there is no dead spot — but it stays
+   (z-index 2) and the lit edge (3), so there is no dead spot - but it stays
    transparent, so the card's own hover styling is what the user actually sees.
    No `transform` here: GSAP owns transform on the card. */
 .hit {
@@ -124,7 +124,7 @@
 
    Measured, not guessed. The previous ramp (0.86 -> 0.2 at 38%) left the
    background behind the metric at rgb(72,71,77) on a light screenshot, and the
-   gradient-filled figure only reached 2.78:1 against it — under the 3:1 that
+   gradient-filled figure only reached 2.78:1 against it - under the 3:1 that
    non-text graphics need. Four of the six cards failed. The mid stop is what
    fixes it: the figure sits around 10% up from the bottom, which the old 38%
    stop had already faded most of the way out. */
@@ -143,8 +143,7 @@
 
 /* Glass, not a solid pill. Pills on this site are reserved for actions; this is
    metadata, so it takes a soft rectangle and the cards' own glass vocabulary.
-   The brand appears as a 5px dot — the same device as the global .kicker —
-   rather than as a slab of saturated purple.
+   The brand appears as a 5px dot - the same device as the global .kicker - rather than as a slab of saturated purple.
 
    The scrim carries legibility on its own: the three brightest screenshots sit
    at luminance ~248 behind this corner, and backdrop-filter can be silently

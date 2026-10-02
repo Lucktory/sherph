@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 /**
- * True once the page has scrolled past the hero's top edge — the header uses it
+ * True once the page has scrolled past the hero's top edge - the header uses it
  * to swap from transparent-over-video to a solid, blurred bar.
  */
 export function useStickyHeader(offset = 40): boolean {

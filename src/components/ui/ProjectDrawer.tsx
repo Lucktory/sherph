@@ -22,7 +22,7 @@ type ProjectDrawerProps = {
 const FOCUSABLE = 'a[href], button:not([disabled])';
 
 /**
- * Shows the host and path of a URL without the protocol — `animastore.co`
+ * Shows the host and path of a URL without the protocol - `animastore.co`
  * rather than `https://animastore.co/`. The panel mentions where the work
  * lives; it does not need to shout a full URL.
  */
@@ -41,7 +41,7 @@ function shortUrl(url: string): string {
  * Deliberately NOT a centred modal: a centred box has to be short enough to fit
  * a viewport in both directions, which is what pushed the old version into one
  * long paragraph. A right-hand drawer is tall and narrow, so the content can be
- * a scannable list — path, role, then the problems solved — and the grid stays
+ * a scannable list - path, role, then the problems solved - and the grid stays
  * visible behind it, which keeps the sense of moving through a set.
  *
  * Entirely data-driven: it renders whatever `items` contains, so adding a
@@ -66,7 +66,7 @@ export function ProjectDrawer({
 
   const requestClose = useCallback(() => {
     // With animations off there is no exit to wait for, and `animationend`
-    // would never fire — so close straight away rather than hanging open.
+    // would never fire - so close straight away rather than hanging open.
     if (prefersReducedMotion()) {
       onClose();
       return;
@@ -77,7 +77,7 @@ export function ProjectDrawer({
   // Safety net. The close depends on `animationend`, and the failure mode when
   // that event does not arrive is the worst one available: the panel stays
   // mounted and its scrim sits invisible over the entire page, eating every
-  // click. Anything can swallow the event — a dropped frame, the tab being
+  // click. Anything can swallow the event - a dropped frame, the tab being
   // backgrounded mid-animation, a future edit to the CSS. So the close is also
   // driven by a timer well past the 280ms exit, and whichever fires first wins.
   useEffect(() => {
@@ -244,7 +244,7 @@ export function ProjectDrawer({
 
           <h3 className={styles.title}>{item.title}</h3>
 
-          {/* The site path, kept small and factual — it says where the work
+          {/* The site path, kept small and factual - it says where the work
               lives rather than acting as the call to action. */}
           {item.liveUrl ? (
             <a

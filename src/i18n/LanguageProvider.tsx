@@ -23,7 +23,7 @@ type LanguageProviderProps = {
 /**
  * Holds the active locale for the whole tree.
  *
- * Switching languages is a pure state update — every dictionary is already in
+ * Switching languages is a pure state update - every dictionary is already in
  * memory, so the page re-renders in the new language within a frame. The URL and
  * the locale cookie are updated alongside it (via `replaceState`, so no
  * navigation and no scroll jump), which keeps the choice shareable and makes it
@@ -37,7 +37,7 @@ export function LanguageProvider({ initialLocale, children }: LanguageProviderPr
   }, [locale]);
 
   // Called from the toggle's click handler, so the URL and cookie writes happen
-  // in an event — never inside the state updater, which React runs during render.
+  // in an event - never inside the state updater, which React runs during render.
   const setLocale = useCallback(
     (next: Locale) => {
       if (next === locale) return;

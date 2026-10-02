@@ -11,7 +11,7 @@
   animation: fade 0.25s ease both;
 }
 
-/* A DIFFERENT keyframes name from the entrance — NOT the same one played in
+/* A DIFFERENT keyframes name from the entrance - NOT the same one played in
    reverse. Re-pointing an animation at the same @keyframes with a new direction
    or duration does not restart it: the already-finished animation stays
    finished, animationend never fires, the panel never unmounts, and an
@@ -37,7 +37,7 @@
   animation: slideIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Distinct keyframes name — see the note on .scrimOut. */
+/* Distinct keyframes name - see the note on .scrimOut. */
 .panelOut {
   animation: slideOut 0.28s cubic-bezier(0.55, 0, 0.68, 0.3) both;
 }
@@ -413,7 +413,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* No slide, and no exit animation to wait on — the component closes
+  /* No slide, and no exit animation to wait on - the component closes
      immediately in this mode (see ProjectDrawer.tsx). */
   .scrim,
   .scrimOut,

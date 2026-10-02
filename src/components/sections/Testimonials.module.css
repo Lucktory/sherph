@@ -6,7 +6,7 @@
    Process section, so the two light panels are the same surface rather than two
    unrelated light greys.
 
-   Deliberately NOT `overflow: hidden` — that makes this a scroll container, and
+   Deliberately NOT `overflow: hidden` - that makes this a scroll container, and
    ScrollTrigger would then treat it as the scroller for every trigger inside it,
    so those triggers could never fire. The stage clips itself instead. */
 .testimonials:global(.light) {
@@ -44,7 +44,7 @@
   padding: 10px 0;
 }
 
-/* Height is set from JS to the tallest card — see Testimonials.tsx. The
+/* Height is set from JS to the tallest card - see Testimonials.tsx. The
    min-height is only a floor for the first paint, before measuring. */
 .track {
   position: relative;
@@ -84,7 +84,7 @@
    0.55, not the 0.22 this used while the section was dark: a white card faded
    to 22% over a #f0f0fa panel is very nearly the panel itself, so the shoulders
    all but vanished. The higher value is affordable now that the cards are
-   opaque — the original worry, the centre quote showing through an overlapping
+   opaque - the original worry, the centre quote showing through an overlapping
    shoulder, can no longer happen. */
 .isLeft {
   opacity: 0.55;
@@ -138,7 +138,7 @@
 }
 
 /* Bright gold fill for the familiar look, darker amber outline so the star is
-   still a defined shape against white — the fill alone is only 2.1:1 there. */
+   still a defined shape against white - the fill alone is only 2.1:1 there. */
 .star {
   width: 15px;
   height: 15px;
@@ -155,7 +155,7 @@
 }
 
 /* Not --muted-2: at 10.5px that token only reaches 3.4:1 on this panel. */
-/* 750 for the same reason as Process .fsub — this panel is light. */
+/* 750 for the same reason as Process .fsub - this panel is light. */
 .when {
   font-size: var(--label-sm);
   font-weight: 750;

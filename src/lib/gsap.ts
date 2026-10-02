@@ -24,7 +24,7 @@ export function prefersReducedMotion(): boolean {
 
 /**
  * True for a real pointing device. Cursor-driven effects are pointless on touch
- * — and worse than pointless, since a tap would leave them stuck mid-state.
+ * - and worse than pointless, since a tap would leave them stuck mid-state.
  */
 export function hasFinePointer(): boolean {
   if (typeof window === 'undefined') return false;

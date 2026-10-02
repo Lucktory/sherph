@@ -32,7 +32,7 @@ const MAX_PUSH = 26;
 const EASE = 0.14;
 
 type Dot = {
-  /** Home position — the dot always eases back to this. */
+  /** Home position - the dot always eases back to this. */
   ox: number;
   oy: number;
   x: number;
@@ -51,7 +51,7 @@ type InteractiveMeshProps = {
  *
  * Dots within `INFLUENCE` are pushed directly away from the pointer, brightening
  * and growing as they go, then ease back home once it leaves. Drawn to a canvas
- * rather than the DOM — a section this size holds well over a thousand dots, and
+ * rather than the DOM - a section this size holds well over a thousand dots, and
  * that many elements would be far too much for the layout engine.
  *
  * Drop it as the first child of a `position: relative` section.

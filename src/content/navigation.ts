@@ -10,13 +10,15 @@ export type NavItem = {
 /**
  * Order of the header and mobile menus.
  *
- * Every entry must correspond to a section that actually renders — a link to a
+ * Every entry must correspond to a section that actually renders - a link to a
  * missing id scrolls nowhere, and the scroll-spy underlines a tab nobody can
  * reach. `certifications` is commented out because that section does not exist
  * yet; its dictionary label is still in `nav`, so uncommenting is all it needs.
  */
 export const navItems: readonly NavItem[] = [
+  { id: 'process', labelKey: 'process' },
   { id: 'services', labelKey: 'services' },
+  { id: 'designshow', labelKey: 'designShow' },
   { id: 'projects', labelKey: 'projects' },
   { id: 'testimonials', labelKey: 'testimonials' },
   { id: 'stacks', labelKey: 'stacks' },
